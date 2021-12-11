@@ -1,0 +1,8 @@
+ply
+format ascii 1.0
+element myList 3
+property list uchar int myNumbers
+end_header
+3 0 1 2
+3 3 4 5
+3 6 7 8
