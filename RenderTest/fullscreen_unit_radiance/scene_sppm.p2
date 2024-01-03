@@ -1,0 +1,42 @@
+#version 1.1.0;
+
+option(single-frame-render-session) @session = [vector2 frame-size "10 10"] [string visualizer @visualizer] [string observer @observer] [string sample-source @sampler];
+observer(single-lens) @observer = [real fov-degrees 45] [vector3 position "0 0 0"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
+sample-source(stratified) @sampler = [integer samples 1];
+
+visualizer(photon-mapping) @visualizer = 
+    [enum sample-filter box]
+    [enum mode stochastic-progressive]
+    [integer num-passes 16]
+    [integer num-photons 128]
+    [integer num-samples-per-pixel 1];
+
+image(constant) @unitRadiance = [real-array values "1.0"][enum color-space LSRGB];
+image(constant) @black = [real-array values "0.0"][enum color-space LSRGB];
+image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];
+
+geometry(rectangle) @rectangle = [real width 4] [real height 4];
+material(matte-opaque) @pureAbsorption = [image albedo @black];
+
+// Using pure absorption so the wall behind the camera will not affect the final image (being radiance of value 1)
+actor(model-light) @frontLight = [geometry geometry @rectangle][material material @pureAbsorption][image emitted-radiance @unitRadiance];
+
+// Move to the front of camera
+translate(@frontLight) = [vector3 amount "0 0 -1"];
+
+material(matte-opaque) @whiteMaterial = [image albedo @white];
+
+// Back wall
+actor(model) @backWall = [geometry geometry @rectangle][material material @whiteMaterial];
+translate(@backWall) = [vector3 amount "0 0 1"];
+rotate(@backWall) = [vector3 axis "1 0 0"] [real degrees 180];
+
+// Right wall
+actor(model) @rightWall = [geometry geometry @rectangle] [material material @whiteMaterial];
+translate(@rightWall) = [vector3 amount "1 0 0"];
+rotate(@rightWall) = [vector3 axis "0 1 0"] [real degrees -90];
+
+// Left wall
+actor(model) @leftWall = [geometry geometry @rectangle] [material material @whiteMaterial];
+translate(@leftWall) = [vector3 amount "-1 0 0"];
+rotate(@leftWall) = [vector3 axis "0 1 0"] [real degrees 90];
