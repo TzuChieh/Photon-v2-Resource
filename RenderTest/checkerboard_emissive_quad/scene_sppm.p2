@@ -1,0 +1,48 @@
+#version 1.1.0;
+
+option(single-frame-render-session) @session = [vector2 frame-size "32 32"] [string visualizer @visualizer] [string observer @observer] [string sample-source @sampler];
+observer(single-lens) @observer = [real fov-degrees 90] [vector3 position "0 0 0"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
+sample-source(stratified) @sampler = [integer samples 1];
+
+visualizer(photon-mapping) @visualizer = 
+    [enum sample-filter gaussian]
+    [enum mode stochastic-progressive]
+    [integer num-passes 256]
+    [integer num-photons 128]
+    [integer num-samples-per-pixel 4];
+
+visualizer(path-tracing) @visualizer = [enum sample-filter gaussian] [enum estimator bneept];
+
+geometry(rectangle) @rectangle = [real width 2] [real height 2];
+image(raster-file) @checkerboard = [PRI image-file :checkerboard.png];
+image(constant) @black = [real-array values "0.0"][enum color-space LSRGB];
+image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];
+material(matte-opaque) @pureAbsorption = [image albedo @black];
+
+// Using pure absorption so the wall behind the camera will not affect the final image (being radiance of value 1)
+actor(model-light) @frontLight =
+    [geometry geometry @rectangle]
+    [material material @pureAbsorption]
+    [image emitted-radiance @checkerboard];
+
+// Move to 1 meter in front of the camera at origin (90-deg FoV), so the 2x2 rectangle will fully fit the film
+translate(@frontLight) = [vector3 amount "0 0 -1"];
+
+material(matte-opaque) @whiteMaterial = [image albedo @white];
+
+// Following walls are for receiving photons
+
+// Back wall
+actor(model) @backWall = [geometry geometry @rectangle][material material @whiteMaterial];
+translate(@backWall) = [vector3 amount "0 0 1.5"];
+rotate(@backWall) = [vector3 axis "1 0 0"] [real degrees 180];
+
+// Right wall
+actor(model) @rightWall = [geometry geometry @rectangle] [material material @whiteMaterial];
+translate(@rightWall) = [vector3 amount "1.5 0 0"];
+rotate(@rightWall) = [vector3 axis "0 1 0"] [real degrees -90];
+
+// Left wall
+actor(model) @leftWall = [geometry geometry @rectangle] [material material @whiteMaterial];
+translate(@leftWall) = [vector3 amount "-1.5 0 0"];
+rotate(@leftWall) = [vector3 axis "0 1 0"] [real degrees 90];
