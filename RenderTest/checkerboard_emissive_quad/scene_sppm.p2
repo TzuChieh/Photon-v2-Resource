@@ -11,8 +11,6 @@ visualizer(photon-mapping) @visualizer =
     [integer num-photons 128]
     [integer num-samples-per-pixel 4];
 
-visualizer(path-tracing) @visualizer = [enum sample-filter gaussian] [enum estimator bneept];
-
 geometry(rectangle) @rectangle = [real width 2] [real height 2];
 image(raster-file) @checkerboard = [PRI image-file :checkerboard.png];
 image(constant) @black = [real-array values "0.0"][enum color-space LSRGB];
