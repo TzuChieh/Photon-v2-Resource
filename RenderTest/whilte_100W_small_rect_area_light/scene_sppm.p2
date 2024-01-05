@@ -2,8 +2,14 @@
 
 option(single-frame-render-session) @session = [vector2 frame-size "64 48"] [string visualizer @visualizer] [string observer @observer] [string sample-source @sampler];
 observer(single-lens) @observer = [real fov-degrees 60] [vector3 position "0 0 0"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
-sample-source(stratified) @sampler = [integer samples 512];
-visualizer(path-tracing) @visualizer = [enum sample-filter box] [enum estimator bneept];
+sample-source(stratified) @sampler = [integer samples 1];
+
+visualizer(photon-mapping) @visualizer = 
+    [enum sample-filter box]
+    [enum mode stochastic-progressive]
+    [integer num-passes 512]
+    [integer num-photons 2048]
+    [integer num-samples-per-pixel 1];
 
 geometry(rectangle) @rectangle = [real width 2] [real height 1];
 image(constant) @gray = [real-array values "0.5"][enum color-space LSRGB];
