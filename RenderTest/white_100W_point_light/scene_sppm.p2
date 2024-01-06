@@ -1,0 +1,29 @@
+#version 1.1.0;
+
+option(single-frame-render-session) @session = [vector2 frame-size "64 48"] [string visualizer @visualizer] [string observer @observer] [string sample-source @sampler];
+observer(single-lens) @observer = [real fov-degrees 60] [vector3 position "0 0 0"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
+sample-source(stratified) @sampler = [integer samples 1];
+
+visualizer(photon-mapping) @visualizer = 
+    [enum sample-filter box]
+    [enum mode stochastic-progressive]
+    [integer num-passes 1024]
+    [integer num-photons 2048]
+    [integer num-samples-per-pixel 1];
+
+geometry(rectangle) @rectangle = [real width 2] [real height 1];
+image(constant) @gray = [real-array values "0.5"][enum color-space LSRGB];
+material(matte-opaque) @diffuse = [image albedo @gray];
+
+// Top light
+actor(point-light) @pointLight = 
+    [spectrum color "1 1 1"]
+    [real watts 100];
+translate(@pointLight) = [vector3 amount "0 1.5 -3"];
+rotate(@pointLight) = [vector3 axis "1 0 0"][real degrees 90];
+
+// Ground
+actor(model) @ground = [geometry geometry @rectangle][material material @diffuse];
+translate(@ground) = [vector3 amount "0 -0.5 -3"];
+rotate(@ground) = [vector3 axis "1 0 0"][real degrees -90];
+scale(@ground) = [vector3 amount 5];
