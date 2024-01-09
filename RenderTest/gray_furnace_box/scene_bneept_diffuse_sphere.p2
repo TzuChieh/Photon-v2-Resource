@@ -6,7 +6,7 @@ option(single-frame-render-session) @session =
     [string observer @observer]
     [string sample-source @sampler];
 observer(single-lens) @observer = [real fov-degrees 80] [vector3 position "0 0 16"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
-sample-source(stratified) @sampler = [integer samples 1024];
+sample-source(stratified) @sampler = [integer samples 2000];
 visualizer(path-tracing) @visualizer = [enum sample-filter gaussian] [enum estimator bneept];
 
 geometry(rectangle) @boxWall = [real width 2000] [real height 2000];
