@@ -1,0 +1,32 @@
+#version 1.1.0;
+
+option(single-frame-render-session) @session = [vector2 frame-size "80 80"] [string visualizer @visualizer] [string observer @observer] [string sample-source @sampler];
+observer(single-lens) @observer = [real fov-degrees 70] [vector3 position "0 0 -0.8"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
+sample-source(stratified) @sampler = [integer samples 200];
+visualizer(path-tracing) @visualizer = [enum sample-filter bh] [enum estimator bneept];
+
+geometry(rectangle) @rectangle = [real width 2] [real height 1];
+image(constant) @gray = [real-array values "0.5"][enum color-space LSRGB];
+material(matte-opaque) @diffuse = [image albedo @gray];
+
+// Single light shinning from top
+actor(rectangle-light) @areaLight = 
+    [real width 11]
+    [real height 11]
+    [spectrum color "1 1 1"]
+    [real watts 350];
+translate(@areaLight) = [vector3 amount "0 1 -3"];
+rotate(@areaLight) = [vector3 axis "1 0 0"][real degrees 90];
+
+// Ground
+actor(model) @ground = [geometry geometry @rectangle][material material @diffuse];
+translate(@ground) = [vector3 amount "0 -1 -3"];
+rotate(@ground) = [vector3 axis "1 0 0"][real degrees -90];
+scale(@ground) = [vector3 amount 5];
+
+// PLY mesh
+geometry(ply) @ply = [PRI ply-file :quad.ply];
+actor(model) @targetObj = [geometry geometry @ply][material material @diffuse];
+translate(@targetObj) = [vector3 amount "0 0 -3"];
+rotate(@targetObj) = [vector3 axis "0 1 0"][real degrees 90];
+scale(@targetObj) = [vector3 amount 1.0];
