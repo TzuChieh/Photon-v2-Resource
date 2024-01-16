@@ -5,12 +5,12 @@ observer(single-lens) @observer = [real fov-degrees 70] [vector3 position "0 0 -
 sample-source(stratified) @sampler = [integer samples 1];
 
 visualizer(photon-mapping) @visualizer = 
-    [enum sample-filter box]
+    [enum sample-filter bh]
     [enum mode stochastic-progressive]
     [integer num-passes 300]
     [integer num-photons 80000]
     [real photon-radius 0.15]
-    [integer num-samples-per-pixel 1];
+    [integer num-samples-per-pixel 4];
 
 geometry(rectangle) @rectangle = [real width 2] [real height 1];
 image(constant) @gray = [real-array values "0.5"][enum color-space LSRGB];
