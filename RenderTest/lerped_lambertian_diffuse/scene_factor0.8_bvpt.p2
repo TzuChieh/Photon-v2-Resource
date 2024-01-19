@@ -1,0 +1,37 @@
+#version 1.1.0;
+
+option(single-frame-render-session) @session = [vector2 frame-size "60 40"] [string visualizer @visualizer] [string observer @observer] [string sample-source @sampler];
+observer(single-lens) @observer = [real fov-degrees 60] [vector3 position "2 1.5 4"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
+sample-source(stratified) @sampler = [integer samples 5000];
+visualizer(path-tracing) @visualizer = [enum sample-filter box] [enum estimator bvpt];
+
+geometry(rectangle) @rectangle = [real width 2] [real height 1];
+geometry(sphere) @sphere = [real radius 2];
+image(constant) @white = [real-array values 1][enum color-space LSRGB];
+image(constant) @half = [real-array values 0.5][enum color-space LSRGB];
+image(constant) @point8 = [real-array values 0.8][enum color-space LSRGB];
+material(matte-opaque) @diffuse1 = [image albedo @white];
+material(matte-opaque) @diffuse2 = [image albedo @white];
+material(binary-mixed-surface) @lerpedDiffuse = 
+    [enum mode lerp]
+    [material material-0 @diffuse1]
+    [material material-1 @diffuse2]
+    [image factor @point8];
+
+// Spherical light on left
+actor(sphere-light) @areaLight = 
+    [real radius 2]
+    [spectrum color "1 1 1"]
+    [real watts 500];
+translate(@areaLight) = [vector3 amount "-2 1.5 -3"];
+
+// Sphere object on right
+actor(model) @sphereObj = [geometry geometry @sphere][material material @lerpedDiffuse];
+translate(@sphereObj) = [vector3 amount "2 1.5 -3"];
+
+// Ground
+material(matte-opaque) @groundDiffuse = [image albedo @half];
+actor(model) @groundObj = [geometry geometry @rectangle][material material @groundDiffuse];
+translate(@groundObj) = [vector3 amount "0 -0.5 -3"];
+rotate(@groundObj) = [vector3 axis "1 0 0"][real degrees -90];
+scale(@groundObj) = [vector3 amount 6];
