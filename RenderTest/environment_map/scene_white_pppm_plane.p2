@@ -11,7 +11,7 @@ sample-source(halton) @sampler = [integer samples 1][enum sequence random-leap];
 visualizer(photon-mapping) @visualizer = 
     [enum sample-filter gaussian]
     [enum mode probabilistic-progressive]
-    [integer num-passes 200]
+    [integer num-passes 400]
     [integer num-photons 100000]
     [integer photon-radius 2.0]
     [integer num-samples-per-pixel 1];
