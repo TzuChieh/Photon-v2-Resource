@@ -24,3 +24,5 @@ actor(model) @obj = [geometry geometry @largeQuad][material material @pureDiffus
 rotate(@obj) = [vector3 axis "1 0 0"] [real degrees -90];
 
 actor(image-dome) @envmap = [PRI image-file :white.exr]
+translate(@envmap) = [vector3 amount "1000 0 0"]
+rotate(@envmap) = [vector3 axis "0 1 0"] [real degrees -777];
