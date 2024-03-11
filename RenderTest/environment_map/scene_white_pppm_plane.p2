@@ -1,0 +1,26 @@
+#version 1.1.0;
+
+option(single-frame-render-session) @session = 
+    [vector2 frame-size "128 64"]
+    [string visualizer @visualizer]
+    [string observer @observer]
+    [string sample-source @sampler];
+observer(single-lens) @observer = [real fov-degrees 100] [vector3 position "0 0.1 0"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
+sample-source(halton) @sampler = [integer samples 1][enum sequence random-leap];
+
+visualizer(photon-mapping) @visualizer = 
+    [enum sample-filter gaussian]
+    [enum mode probabilistic-progressive]
+    [integer num-passes 200]
+    [integer num-photons 100000]
+    [integer photon-radius 2.0]
+    [integer num-samples-per-pixel 1];
+
+image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];
+geometry(rectangle) @largeQuad = [real width 10][real height 10];
+material(matte-opaque) @pureDiffuse = [image albedo @white];
+
+actor(model) @obj = [geometry geometry @largeQuad][material material @pureDiffuse];
+rotate(@obj) = [vector3 axis "1 0 0"] [real degrees -90];
+
+actor(image-dome) @envmap = [PRI image-file :white.exr]
