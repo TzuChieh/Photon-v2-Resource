@@ -12,7 +12,7 @@ visualizer(photon-mapping) @visualizer =
     [enum sample-filter gaussian]
     [enum mode probabilistic-progressive]
     [integer num-passes 200]
-    [integer num-photons 300000]
+    [integer num-photons 500000]
     [integer photon-radius 2.0]
     [integer num-samples-per-pixel 1];
 
