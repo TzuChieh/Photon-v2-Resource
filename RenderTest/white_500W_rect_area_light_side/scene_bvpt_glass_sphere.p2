@@ -1,0 +1,30 @@
+#version 1.1.0;
+
+option(single-frame-render-session) @session = [vector2 frame-size "128 96"] [string visualizer @visualizer] [string observer @observer] [string sample-source @sampler];
+observer(single-lens) @observer = [real fov-degrees 50] [vector3 position "0 2 10"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
+sample-source(stratified) @sampler = [integer samples 2500];
+visualizer(path-tracing) @visualizer = [enum sample-filter box] [enum estimator bvpt] [enum scheduler bulk];
+
+geometry(rectangle) @rectangle = [real width 2] [real height 1];
+geometry(sphere) @sphere = [real radius 2];
+image(constant) @lightGray = [real-array values "0.7"][enum color-space LSRGB];
+material(matte-opaque) @diffuse = [image albedo @lightGray];
+material(ideal-substance) @glass = [enum substance dielectric][enum fresnel exact][real ior-outer 1][real ior-inner 1.7];
+
+// Big light placed on left facing right
+actor(rectangle-light) @areaLight = 
+    [real width 5]
+    [real height 5]
+    [spectrum color "1 1 1"]
+    [real watts 500];
+translate(@areaLight) = [vector3 amount "-3 2.5 0"];
+rotate(@areaLight) = [vector3 axis "0 1 0"][real degrees 90];
+
+// Ground
+actor(model) @ground = [geometry geometry @rectangle][material material @diffuse];
+rotate(@ground) = [vector3 axis "1 0 0"][real degrees -90];
+scale(@ground) = [vector3 amount 20];
+
+// Object
+actor(model) @obj = [geometry geometry @sphere][material material @glass];
+translate(@obj) = [vector3 amount "0 2 0"];

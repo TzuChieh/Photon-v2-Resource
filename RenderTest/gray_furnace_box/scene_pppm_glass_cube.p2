@@ -11,7 +11,7 @@ sample-source(stratified) @sampler = [integer samples 1];
 visualizer(photon-mapping) @visualizer = 
     [enum sample-filter box]
     [enum mode probabilistic-progressive]
-    [integer num-passes 400]
+    [integer num-passes 600]
     [integer num-photons 2000]
     [integer photon-radius 0.5]
     [integer num-samples-per-pixel 1];
