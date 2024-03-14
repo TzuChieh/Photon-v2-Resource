@@ -1,0 +1,68 @@
+#version 1.1.0;
+
+option(single-frame-render-session) @session = 
+    [vector2 frame-size "96 96"]
+    [string visualizer @visualizer]
+    [string observer @observer]
+    [string sample-source @sampler];
+observer(single-lens) @observer = [real fov-degrees 75] [vector3 position "0 0 16"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
+sample-source(stratified) @sampler = [integer samples 256];
+visualizer(path-tracing) @visualizer = [enum sample-filter gaussian] [enum estimator bneept];
+
+geometry(rectangle) @boxWall = [real width 2000] [real height 2000];
+material(ideal-substance) @pureAbsorption = [enum substance absorber];
+image(constant) @gray = [real-array values "0.5"][enum color-space LSRGB];
+image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];
+
+// Box wall: left
+actor(model-light) @leftWall = 
+    [geometry geometry @boxWall]
+    [material material @pureAbsorption]
+    [image emitted-radiance @gray];
+translate(@leftWall) = [vector3 amount "-900 0 0"];
+rotate(@leftWall)    = [vector3 axis "0 1 0"] [real degrees 90];
+
+// Box wall: right
+actor(model-light) @rightWall = 
+    [geometry geometry @boxWall]
+    [material material @pureAbsorption]
+    [image emitted-radiance @gray];
+translate(@rightWall) = [vector3 amount "900 0 0"];
+rotate(@rightWall)    = [vector3 axis "0 1 0"] [real degrees -90];
+
+// Box wall: top
+actor(model-light) @topWall = 
+    [geometry geometry @boxWall]
+    [material material @pureAbsorption]
+    [image emitted-radiance @gray];
+translate(@topWall) = [vector3 amount "0 900 0"];
+rotate(@topWall)    = [vector3 axis "1 0 0"] [real degrees 90];
+
+// Box wall: bottom
+actor(model-light) @bottomWall = 
+    [geometry geometry @boxWall]
+    [material material @pureAbsorption]
+    [image emitted-radiance @gray];
+translate(@bottomWall) = [vector3 amount "0 -900 0"];
+rotate(@bottomWall)    = [vector3 axis "1 0 0"] [real degrees -90];
+
+// Box wall: back
+actor(model-light) @backWall = 
+    [geometry geometry @boxWall]
+    [material material @pureAbsorption]
+    [image emitted-radiance @gray];
+translate(@backWall) = [vector3 amount "0 0 -900"];
+
+// Box wall: front
+actor(model-light) @frontWall = 
+    [geometry geometry @boxWall]
+    [material material @pureAbsorption]
+    [image emitted-radiance @gray];
+translate(@frontWall) = [vector3 amount "0 0 900"];
+rotate(@frontWall)    = [vector3 axis "0 1 0"] [real degrees 180];
+
+// Target object (@ origin)
+material(ideal-substance) @targetMaterial = [enum substance dielectric][enum fresnel exact][real ior-outer 1][real ior-inner 1.5];
+geometry(cuboid) @targetGeometry = [vector3 size 11];
+actor(model) @target = [geometry geometry @targetGeometry] [material material @targetMaterial];
+rotate(@target) = [vector3 axis "1 1 0"][real degrees 40];
