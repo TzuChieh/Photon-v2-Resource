@@ -1,0 +1,16 @@
+#version 1.1.0;
+sample-source(stratified) @"sample-source" = [integer samples 512];
+visualizer(path-tracing) @"visualizer" = [enum sample-filter "bh"][enum estimator "bvpt"][enum scheduler "bulk"];
+observer(single-lens) @"observer" = [vector3 position "2.4278171062469482 12.278207778930664 15.895854949951172"][vector3 direction "-0.07858048379421234 -0.685052752494812 -0.7242430448532104"][vector3 up-axis "-0.0738975778222084 0.7284935116767883 -0.6810554265975952"][real sensor-width-mm 36.0][real sensor-offset-mm 50.0];
+material(abraded-opaque) @"OutputNode_Material.001_Abraded Opaque_Surface Material" = [enum microsurface "ggx"][spectrum f0 "1.0 1.0 1.0 "][real roughness 0.20000000298023224][enum roughness-to-alpha "squared"];
+material(full) @"Material_Material.001" = [material surface @"OutputNode_Material.001_Abraded Opaque_Surface Material"];
+geometry(triangle-mesh) @"Mesh_Plane_Plane_0" = [vector3-array positions {"-1.0 -1.0 0.0 ""1.0 -1.0 0.0 ""1.0 1.0 0.0 ""-1.0 -1.0 0.0 ""1.0 1.0 0.0 ""-1.0 1.0 0.0 "}][vector3-array texture-coordinates {"0.0 0.0 0.0 ""1.0 0.0 0.0 ""1.0 1.0 0.0 ""0.0 0.0 0.0 ""1.0 1.0 0.0 ""0.0 1.0 0.0 "}][vector3-array normals {"0.0 0.0 1.0 ""0.0 0.0 1.0 ""0.0 0.0 1.0 ""-0.0 0.0 1.0 ""-0.0 0.0 1.0 ""-0.0 0.0 1.0 "}];
+actor(model) @"Object_Plane_0" = [geometry geometry @"Mesh_Plane_Plane_0"][material material @"Material_Material.001"];
+translate(@"Object_Plane_0") = [vector3 amount "0.0 0.0 0.0"];
+rotate(@"Object_Plane_0") = [quaternion rotation "-0.7071067690849304 0.0 0.0 0.7071067690849304"];
+scale(@"Object_Plane_0") = [vector3 amount "9.015475273132324 9.015474319458008 9.015474319458008"];
+actor(rectangle-light) @"Light_Light" = [real width 2.0][real height 2.0][spectrum color "1.0 1.0 1.0 "][real watts 500.0];
+translate(@"Light_Light") = [vector3 amount "4.076245307922363 5.9038615226745605 -1.0054535865783691"];
+rotate(@"Light_Light") = [quaternion rotation "-0.5232755541801453 -0.3420339524745941 0.7269423007965088 -0.2841663062572479"];
+scale(@"Light_Light") = [vector3 amount "0.9999999403953552 0.9999999403953552 0.9999998807907104"];
+option(single-frame-render-session) @"session" = [string visualizer "@visualizer"][string observer "@observer"][string sample-source "@sample-source"][enum top-level-accelerator "bvh"][vector2 frame-size "120 120"];
