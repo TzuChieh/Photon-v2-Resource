@@ -1,6 +1,6 @@
 #version 1.1.0;
-sample-source(stratified) @"sample-source" = [integer samples 64];
-visualizer(path-tracing) @"visualizer" = [enum sample-filter "bh"][enum estimator "bvpt"][enum scheduler "bulk"];
+sample-source(stratified) @"sample-source" = [integer samples 128];
+visualizer(path-tracing) @"visualizer" = [enum sample-filter "bh"][enum estimator "bneept"][enum scheduler "bulk"];
 observer(single-lens) @"observer" = [vector3 position "2.4278171062469482 12.278207778930664 15.895854949951172"][vector3 direction "-0.07858048379421234 -0.685052752494812 -0.7242430448532104"][vector3 up-axis "-0.0738975778222084 0.7284935116767883 -0.6810554265975952"][real sensor-width-mm 36.0][real sensor-offset-mm 50.0];
 material(abraded-opaque) @"OutputNode_Material.001_Abraded Opaque_Surface Material" = [enum microsurface "ggx"][spectrum f0 "1.0 1.0 1.0 "][real roughness 0.20000000298023224][enum roughness-to-alpha "squared"];
 material(full) @"Material_Material.001" = [material surface @"OutputNode_Material.001_Abraded Opaque_Surface Material"];
