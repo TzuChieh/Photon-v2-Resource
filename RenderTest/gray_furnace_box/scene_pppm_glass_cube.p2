@@ -5,7 +5,7 @@ option(single-frame-render-session) @session =
     [string visualizer @visualizer]
     [string observer @observer]
     [string sample-source @sampler];
-observer(single-lens) @observer = [real fov-degrees 75] [vector3 position "0 0 16"] [vector3 direction "0 0 -1"] [vector3 up-axis "0 1 0"];
+observer(single-lens) @observer = [real fov-degrees 75] [vector3 pos "0 0 16"] [vector3 dir "0 0 -1"] [vector3 up-axis "0 1 0"];
 sample-source(stratified) @sampler = [integer samples 1];
 
 visualizer(photon-mapping) @visualizer = 
