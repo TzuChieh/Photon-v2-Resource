@@ -9,7 +9,7 @@ geometry(rectangle) @rectangle = [real width 2] [real height 2];
 image(raster-file) @checkerboard = [PRI image-file :checkerboard.png];
 
 // Material does not matter--nothing is reflecting back in this scene
-actor(model-light) @frontLight = [geometry geometry @rectangle][image emitted-radiance @checkerboard];
+actor(model-light) @frontLight = [geometry geometry @rectangle][image emitted-energy @checkerboard];
 
 // Move to 1 meter in front of the camera at origin (90-deg FoV), so the 2x2 rectangle will fully fit the film
 translate(@frontLight) = [vector3 amount "0 0 -1"];

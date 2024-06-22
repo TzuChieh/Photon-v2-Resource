@@ -19,7 +19,7 @@ geometry(rectangle) @rectangle = [real width 4] [real height 4];
 material(matte-opaque) @pureAbsorption = [image albedo @black];
 
 // Using pure absorption so the wall behind the camera will not affect the final image (being radiance of value 1)
-actor(model-light) @frontLight = [geometry geometry @rectangle][material material @pureAbsorption][image emitted-radiance @unitRadiance];
+actor(model-light) @frontLight = [geometry geometry @rectangle][material material @pureAbsorption][image emitted-energy @unitRadiance];
 
 // Move to the front of camera
 translate(@frontLight) = [vector3 amount "0 0 -1"];

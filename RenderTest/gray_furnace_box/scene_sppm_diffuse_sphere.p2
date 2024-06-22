@@ -27,7 +27,7 @@ image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];
 actor(model-light) @leftWall = 
     [geometry geometry @boxWall]
     [material material @pureAbsorption]
-    [image emitted-radiance @gray];
+    [image emitted-energy @gray];
 translate(@leftWall) = [vector3 amount "-4.9 0 0"];
 rotate(@leftWall)    = [vector3 axis "0 1 0"] [real degrees 90];
 
@@ -35,7 +35,7 @@ rotate(@leftWall)    = [vector3 axis "0 1 0"] [real degrees 90];
 actor(model-light) @rightWall = 
     [geometry geometry @boxWall]
     [material material @pureAbsorption]
-    [image emitted-radiance @gray];
+    [image emitted-energy @gray];
 translate(@rightWall) = [vector3 amount "4.9 0 0"];
 rotate(@rightWall)    = [vector3 axis "0 1 0"] [real degrees -90];
 
@@ -43,7 +43,7 @@ rotate(@rightWall)    = [vector3 axis "0 1 0"] [real degrees -90];
 actor(model-light) @topWall = 
     [geometry geometry @boxWall]
     [material material @pureAbsorption]
-    [image emitted-radiance @gray];
+    [image emitted-energy @gray];
 translate(@topWall) = [vector3 amount "0 4.9 0"];
 rotate(@topWall)    = [vector3 axis "1 0 0"] [real degrees 90];
 
@@ -51,7 +51,7 @@ rotate(@topWall)    = [vector3 axis "1 0 0"] [real degrees 90];
 actor(model-light) @bottomWall = 
     [geometry geometry @boxWall]
     [material material @pureAbsorption]
-    [image emitted-radiance @gray];
+    [image emitted-energy @gray];
 translate(@bottomWall) = [vector3 amount "0 -4.9 0"];
 rotate(@bottomWall)    = [vector3 axis "1 0 0"] [real degrees -90];
 
@@ -59,14 +59,14 @@ rotate(@bottomWall)    = [vector3 axis "1 0 0"] [real degrees -90];
 actor(model-light) @backWall = 
     [geometry geometry @boxWall]
     [material material @pureAbsorption]
-    [image emitted-radiance @gray];
+    [image emitted-energy @gray];
 translate(@backWall) = [vector3 amount "0 0 -4.9"];
 
 // Box wall: front
 actor(model-light) @frontWall = 
     [geometry geometry @boxWall]
     [material material @pureAbsorption]
-    [image emitted-radiance @gray];
+    [image emitted-energy @gray];
 translate(@frontWall) = [vector3 amount "0 0 4.9"];
 rotate(@frontWall)    = [vector3 axis "0 1 0"] [real degrees 180];
 

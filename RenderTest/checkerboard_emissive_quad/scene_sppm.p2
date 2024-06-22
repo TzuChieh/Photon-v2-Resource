@@ -21,7 +21,7 @@ material(matte-opaque) @pureAbsorption = [image albedo @black];
 actor(model-light) @frontLight =
     [geometry geometry @rectangle]
     [material material @pureAbsorption]
-    [image emitted-radiance @checkerboard];
+    [image emitted-energy @checkerboard];
 
 // Move to 1 meter in front of the camera at origin (90-deg FoV), so the 2x2 rectangle will fully fit the film
 translate(@frontLight) = [vector3 amount "0 0 -1"];
