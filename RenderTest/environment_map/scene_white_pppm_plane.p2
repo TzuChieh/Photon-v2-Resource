@@ -13,7 +13,7 @@ visualizer(photon-mapping) @visualizer =
     [enum mode probabilistic-progressive]
     [integer num-passes 200]
     [integer num-photons 1000000]
-    [integer photon-radius 2.0]
+    [real photon-radius 2.0]
     [integer num-samples-per-pixel 1];
 
 image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];

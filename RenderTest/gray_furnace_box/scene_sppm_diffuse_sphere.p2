@@ -13,7 +13,7 @@ visualizer(photon-mapping) @visualizer =
     [enum mode stochastic-progressive]
     [integer num-passes 100]
     [integer num-photons 400000]
-    [integer photon-radius 0.8]
+    [real photon-radius 0.8]
     [integer num-samples-per-pixel 4];
 
 // 100X smaller furnace box and closer camera to increase the rate of photon hit on the target

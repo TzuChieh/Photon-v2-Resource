@@ -13,7 +13,7 @@ visualizer(photon-mapping) @visualizer =
     [enum mode probabilistic-progressive]
     [integer num-passes 600]
     [integer num-photons 2000]
-    [integer photon-radius 0.5]
+    [real photon-radius 0.5]
     [integer num-samples-per-pixel 1];
 
 geometry(rectangle) @boxWall = [real width 2000] [real height 2000];
