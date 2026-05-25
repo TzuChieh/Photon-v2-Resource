@@ -9,7 +9,7 @@ visualizer(photon-mapping) @visualizer =
     [enum mode stochastic-progressive]
     [integer num-passes 512]
     [integer num-photons 8192]
-    [real photon-radius 2]
+    [real photon-radius 0.6]
     [integer num-samples-per-pixel 1];
 
 geometry(rectangle) @rectangle = [real width 2] [real height 1];
