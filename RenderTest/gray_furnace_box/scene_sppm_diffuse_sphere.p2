@@ -11,9 +11,9 @@ sample-source(stratified) @sampler = [integer samples 1];
 visualizer(photon-mapping) @visualizer = 
     [enum sample-filter box]
     [enum mode stochastic-progressive]
-    [integer num-passes 100]
-    [integer num-photons 400000]
-    [real photon-radius 0.8]
+    [integer num-passes 200]
+    [integer num-photons 300000]
+    [real photon-radius 0.6]
     [integer num-samples-per-pixel 4];
 
 // 100X smaller furnace box and closer camera to increase the rate of photon hit on the target
