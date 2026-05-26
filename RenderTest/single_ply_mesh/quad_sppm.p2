@@ -10,6 +10,7 @@ visualizer(photon-mapping) @visualizer =
     [integer num-passes 500]
     [integer num-photons 80000]
     [real photon-radius 0.1]
+    [integer min-photon-path-length 2]
     [integer num-samples-per-pixel 2];
 
 geometry(rectangle) @rectangle = [real width 2] [real height 1];
