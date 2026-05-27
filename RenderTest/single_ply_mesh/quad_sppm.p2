@@ -7,11 +7,11 @@ sample-source(stratified) @sampler = [integer samples 1];
 visualizer(photon-mapping) @visualizer = 
     [enum sample-filter bh]
     [enum mode stochastic-progressive]
-    [integer num-passes 500]
-    [integer num-photons 80000]
-    [real photon-radius 0.1]
+    [integer num-passes 100]
+    [integer num-photons 40000]
+    [real photon-radius 0.2]
     [integer min-photon-path-length 2]
-    [integer num-samples-per-pixel 4];
+    [integer num-samples-per-pixel 9];
 
 geometry(rectangle) @rectangle = [real width 2] [real height 1];
 image(constant) @gray = [real-array values "0.5"][enum color-space LSRGB];
