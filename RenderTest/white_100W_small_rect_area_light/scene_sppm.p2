@@ -7,9 +7,9 @@ sample-source(stratified) @sampler = [integer samples 1];
 visualizer(photon-mapping) @visualizer = 
     [enum sample-filter box]
     [enum mode stochastic-progressive]
-    [integer num-passes 512]
+    [integer num-passes 256]
     [integer num-photons 8192]
-    [real photon-radius 0.6]
+    [real photon-radius 1.2]
     [integer num-samples-per-pixel 1];
 
 geometry(rectangle) @rectangle = [real width 2] [real height 1];

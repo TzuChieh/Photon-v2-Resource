@@ -1,0 +1,2 @@
+#import "nested/child.p2";
+object(TSdlReferenceArray_test::test-resource) @nested-main = ;

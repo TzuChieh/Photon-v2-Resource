@@ -1,0 +1,2 @@
+#import "direct_fragment.p2";
+object(TSdlReferenceArray_test::test-resource) @direct-main = ;
