@@ -1,0 +1,7 @@
+#import "large_furnace_box.p2";
+
+// Target object (@ origin)
+material(ideal-substance) @targetMaterial = [enum substance dielectric][enum fresnel exact][real ior-outer 1][real ior-inner 1.5];
+geometry(cuboid) @targetGeometry = [vector3 size 11];
+actor(model) @target = [geometry geometry @targetGeometry] [material material @targetMaterial];
+rotate(@target) = [vector3 axis "1 1 0"][real degrees 40];

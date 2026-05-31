@@ -21,7 +21,7 @@ ref_name_1.pfm
 ...
 ```
 
-`_0` is the beauty output. Later indices are scene-specific outputs such as variance.
+`_0` is the beauty output. Later indices are scene-specific outputs, such as variance images used by unbiased path-tracing z-tests. Photon-mapping scenes intentionally use non-z verifiers and do not require variance references.
 
 Some tests, such as `fullscreen_unit_radiance` and `gray_furnace_box`, use analytic verifier targets instead of reference images.
 

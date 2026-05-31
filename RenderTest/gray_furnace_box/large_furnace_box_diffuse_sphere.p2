@@ -1,0 +1,6 @@
+#import "large_furnace_box.p2";
+
+// Target object (@ origin)
+material(matte-opaque) @targetMaterial = [image albedo @white];
+geometry(sphere) @targetGeometry = [real radius 9];
+actor(model) @target = [geometry geometry @targetGeometry] [material material @targetMaterial];

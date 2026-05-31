@@ -5,11 +5,4 @@ observer(single-lens) @observer = [real fov-degrees 45] [vector3 pos "0 0 0"] [v
 sample-source(stratified) @sampler = [integer samples 16];
 visualizer(path-tracing) @visualizer = [enum sample-filter box] [enum estimator bvpt];
 
-geometry(rectangle) @rectangle = [real width 4] [real height 4];
-image(constant) @unitRadiance = [real-array values "1.0"][enum color-space LSRGB];
-
-// Material does not matter--nothing is reflecting back in  this scene
-actor(model-light) @frontLight = [geometry geometry @rectangle][image emitted-energy @unitRadiance];
-
-// Move to the front of camera
-translate(@frontLight) = [vector3 amount "0 0 -1"];
+#import "fullscreen_unit_radiance.p2";

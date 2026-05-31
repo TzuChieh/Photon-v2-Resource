@@ -1,0 +1,6 @@
+#import "large_furnace_box.p2";
+
+// Target object (@ origin)
+material(ideal-substance) @targetMaterial = [enum substance dielectric][enum fresnel exact][real ior-outer 1][real ior-inner 1.5];
+geometry(sphere) @targetGeometry = [real radius 9];
+actor(model) @target = [geometry geometry @targetGeometry] [material material @targetMaterial];
