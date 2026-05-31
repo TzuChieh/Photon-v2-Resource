@@ -9,7 +9,7 @@ visualizer(photon-mapping) @visualizer =
     [enum mode stochastic-progressive]
     [integer num-passes 256]
     [integer num-photons 8192]
-    [real photon-radius 1.2]
+    [real photon-radius 0.3]
     [integer num-samples-per-pixel 1];
 
 #import "white_100W_small_rect_area_light.p2";
