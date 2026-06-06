@@ -6,7 +6,7 @@ option(single-frame-render-session) @session =
     [string observer @observer]
     [string sample-source @sampler];
 observer(single-lens) @observer = [real fov-degrees 100] [vector3 pos "0 0 16"] [vector3 dir "0 0 -1"] [vector3 up-axis "0 1 0"];
-sample-source(stratified) @sampler = [integer samples 64];
+sample-source(halton) @sampler = [integer samples 64][enum permutation fixed][enum sequence leap];
 visualizer(path-tracing) @visualizer = [enum sample-filter gaussian] [enum estimator bneept];
 
 geometry(sphere) @sphere = [real radius 6];

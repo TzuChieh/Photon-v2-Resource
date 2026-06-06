@@ -13,15 +13,14 @@ Data files for the Photon-v2 renderer.
 
 `RenderTest/` contains scenes and reference images for end-to-end render tests.
 
-PhotonCLI writes multi-image outputs as numbered files, so reference images use the same naming:
+Reference image stems use semantic suffixes declared by `RenderTest/render_all_refs.py`:
 
 ```text
-ref_name_0.pfm
-ref_name_1.pfm
-...
+ref_name_beauty.pfm
+ref_name_var.pfm
 ```
 
-`_0` is the beauty output. Later indices are scene-specific outputs, such as variance images used by unbiased path-tracing z-tests. Variance references may be shared only for intentionally equivalent sampling distributions; BVPT and BNEEPT use separate variance references. Photon-mapping scenes intentionally use non-z verifiers and do not require variance references.
+`beauty` is the radiance reference. `var` is the variance image used by unbiased path-tracing z-tests. Variance-only reference scenes emit a single variance output. Variance references may be shared only for intentionally equivalent sampling distributions; BVPT and BNEEPT use separate variance references. Photon-mapping scenes intentionally use non-z verifiers and do not require variance references.
 
 Some tests, such as `fullscreen_unit_radiance` and `gray_furnace_box`, use analytic verifier targets instead of reference images.
 
