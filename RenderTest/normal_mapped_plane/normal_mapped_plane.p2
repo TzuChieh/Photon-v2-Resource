@@ -1,0 +1,17 @@
+geometry(rectangle) @wall = [real width 2] [real height 2];
+image(constant) @gray = [real-array values "0.7"][enum color-space LSRGB];
+image(raster-file) @normalMap = [PRI image-file :normal_map_example.png];
+material(matte-opaque) @diffuse = [image albedo @gray];
+material(surface-normal-map) @normalMappedDiffuse = [material material @diffuse][image map @normalMap];
+
+actor(rectangle-light) @largeLight =
+    [real width 3.2]
+    [real height 3.2]
+    [spectrum color "1 1 1"]
+    [real watts 700];
+translate(@largeLight) = [vector3 amount "0 3.6 -3.2"];
+rotate(@largeLight) = [vector3 axis "0 1 0"][real degrees 180];
+
+actor(model) @wallActor = [geometry geometry @wall][material material @normalMappedDiffuse];
+translate(@wallActor) = [vector3 amount "0 0 -4"];
+scale(@wallActor) = [vector3 amount "1.6 1.6 1"];

@@ -16,6 +16,9 @@ VALID_OUTPUT_NAMES = {"beauty", "var"}
 REF_SCENE_TO_OUTPUTS = {
     "checkerboard_emissive_quad/ref_bvpt_8192spp.p2": ("beauty", "var"),
     "checkerboard_emissive_quad/ref_bneept_8192spp.p2": ("var",),
+    "cornell_box_normal_map/ref_bvpt_32768spp.p2": ("var",),
+    "cornell_box_normal_map/ref_bneept_32768spp.p2": ("beauty", "var"),
+    "cornell_box_normal_map/ref_pppm_10000passes.p2": ("beauty",),
     "cornell_box_with_gold_sphere/ref_bneept_32768spp.p2": ("beauty", "var"),
     "environment_map/ref_debug_bvpt_sphere_16384spp.p2": ("beauty", "var"),
     "environment_map/ref_debug_bneept_sphere_16384spp.p2": ("var",),
@@ -26,6 +29,9 @@ REF_SCENE_TO_OUTPUTS = {
     "lerped_lambertian_diffuse/ref_factor0p8_bvpt_65536spp.p2": ("var",),
     "lerped_lambertian_diffuse/ref_no_lerp_bneept_65536spp.p2": ("var",),
     "lerped_lambertian_diffuse/ref_factor0p5_bneept_65536spp.p2": ("var",),
+    "normal_mapped_plane/ref_bvpt_32768spp.p2": ("var",),
+    "normal_mapped_plane/ref_bneept_32768spp.p2": ("beauty", "var"),
+    "normal_mapped_plane/ref_pppm_8192passes.p2": ("beauty",),
     "single_ply_mesh/ref_quad_bvpt_16384spp.p2": ("beauty", "var"),
     "single_ply_mesh/ref_quad_bneept_16384spp.p2": ("var",),
     "single_ply_mesh/ref_suzanne_bvpt_16384spp.p2": ("var",),
@@ -48,6 +54,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Render declared reference scenes recursively.")
     parser.add_argument("--photon-cli", required=True, type=Path, help="Path to PhotonCLI executable.")
     parser.add_argument("-t", "--threads", required=True, type=int, help="Thread count passed to PhotonCLI.")
+    parser.add_argument(
+        "-k", "--keyword",
+        action="append",
+        default=[],
+        help="Only render declared scenes whose relative path contains this keyword. Can be repeated.")
     return parser.parse_args()
 
 
@@ -103,14 +114,16 @@ def expected_output_images(scene: Path, outputs: tuple[str, ...]) -> list[Path]:
     return [output_image(scene, output) for output in outputs]
 
 
-def delete_ref_images(root_dir: Path) -> int:
+def delete_ref_images(scenes: list[tuple[Path, tuple[str, ...]]]) -> int:
     """
-    @brief Delete reference images before regeneration.
+    @brief Delete selected reference images before regeneration.
     """
     deleted_count = 0
-    for ref_image in root_dir.rglob("ref*.pfm"):
-        ref_image.unlink()
-        deleted_count += 1
+    for scene, outputs in scenes:
+        for ref_image in expected_output_images(scene, outputs):
+            if ref_image.is_file():
+                ref_image.unlink()
+                deleted_count += 1
     return deleted_count
 
 
@@ -158,6 +171,26 @@ def validate_ref_scene_map(root_dir: Path) -> list[tuple[Path, tuple[str, ...]]]
                 raise RuntimeError(f"{rel_scene} has unknown output '{output}'")
 
     return declared_scenes
+
+
+def filter_scenes(
+    scenes: list[tuple[Path, tuple[str, ...]]],
+    root_dir: Path,
+    keywords: list[str]) -> list[tuple[Path, tuple[str, ...]]]:
+    if not keywords:
+        return scenes
+
+    selected_scenes = []
+    for scene, outputs in scenes:
+        rel_scene = scene.relative_to(root_dir).as_posix()
+        if any(keyword in rel_scene for keyword in keywords):
+            selected_scenes.append((scene, outputs))
+
+    if not selected_scenes:
+        keywords_text = ", ".join(keywords)
+        raise RuntimeError(f"no declared ref scenes matched -k/--keyword: {keywords_text}")
+
+    return selected_scenes
 
 
 def stop_process(process: subprocess.Popen) -> None:
@@ -274,6 +307,7 @@ def main() -> int:
     root_dir = Path(__file__).resolve().parent
     try:
         scenes = validate_ref_scene_map(root_dir)
+        scenes = filter_scenes(scenes, root_dir, args.keyword)
     except RuntimeError:
         return 2
 
@@ -282,8 +316,8 @@ def main() -> int:
     failures: list[tuple[Path, str]] = []
     dashboard = Dashboard()
 
-    deleted_count = delete_ref_images(root_dir)
-    dashboard.log(f"Deleted {deleted_count} existing ref image(s) under {root_dir}")
+    deleted_count = delete_ref_images(scenes)
+    dashboard.log(f"Deleted {deleted_count} selected ref image(s) under {root_dir}")
     dashboard.log(f"Found {total_count} declared ref scene(s) under {root_dir}")
 
     for index, (scene, outputs) in enumerate(scenes, start=1):

@@ -1,0 +1,45 @@
+geometry(rectangle) @boxWall = [real width 1] [real height 1];
+geometry(sphere) @sphere = [real radius 2.5];
+
+image(constant) @white = [real-array values "0.7 0.7 0.7"][enum color-space LSRGB];
+image(raster-file) @normalMap = [PRI image-file :wall.png];
+image(checkerboard) @wallNormalMap = [image odd @normalMap][image even @normalMap][real u-tiles 3][real v-tiles 3];
+image(checkerboard) @sphereNormalMap = [image odd @normalMap][image even @normalMap][real u-tiles 4][real v-tiles 2];
+
+material(matte-opaque) @whiteMaterial = [image albedo @white];
+material(abraded-opaque) @goldMaterial = [enum microsurface ggx] [real roughness 0.4] [spectrum f0 "1.0 0.765557 0.336057"];
+material(surface-normal-map) @normalMappedGold = [material material @goldMaterial][image map @wallNormalMap];
+material(ideal-substance) @glassMaterial = [enum substance dielectric];
+material(surface-normal-map) @normalMappedGlass = [material material @glassMaterial][image map @sphereNormalMap];
+
+actor(rectangle-light) @topLight = [spectrum color "1 1 1"][real watts 500][real width 4][real height 4];
+translate(@topLight) = [vector3 amount "-2 3.6 0"];
+rotate(@topLight) = [vector3 axis "1 0 0"] [real degrees 90];
+rotate(@topLight) = [vector3 axis "0 0 1"] [real degrees 30];
+
+actor(model) @leftWall = [geometry geometry @boxWall] [material material @normalMappedGold];
+actor(model).translate(@leftWall) = [vector3 amount "-5 0 0"];
+actor(model).rotate(@leftWall) = [vector3 axis "0 1 0"] [real degrees 90];
+actor(model).scale(@leftWall) = [vector3 amount "10 10 10"];
+
+actor(model) @rightWall = [geometry geometry @boxWall] [material material @normalMappedGold];
+actor(model).translate(@rightWall) = [vector3 amount "5 0 0"];
+actor(model).rotate(@rightWall) = [vector3 axis "0 1 0"] [real degrees -90];
+actor(model).scale(@rightWall) = [vector3 amount "10 10 10"];
+
+actor(model) @topWall = [geometry geometry @boxWall] [material material @whiteMaterial];
+actor(model).translate(@topWall) = [vector3 amount "0 5 0"];
+actor(model).rotate(@topWall) = [vector3 axis "1 0 0"] [real degrees 90];
+actor(model).scale(@topWall) = [vector3 amount "10 10 10"];
+
+actor(model) @bottomWall = [geometry geometry @boxWall] [material material @whiteMaterial];
+actor(model).translate(@bottomWall) = [vector3 amount "0 -5 0"];
+actor(model).rotate(@bottomWall) = [vector3 axis "1 0 0"] [real degrees -90];
+actor(model).scale(@bottomWall) = [vector3 amount "10 10 10"];
+
+actor(model) @backWall = [geometry geometry @boxWall] [material material @normalMappedGold];
+actor(model).translate(@backWall) = [vector3 amount "0 0 -5"];
+actor(model).scale(@backWall) = [vector3 amount "10 10 10"];
+
+actor(model) @sphereModel = [geometry geometry @sphere] [material material @normalMappedGlass];
+actor(model).translate(@sphereModel) = [vector3 amount "0 -2.5 0"];

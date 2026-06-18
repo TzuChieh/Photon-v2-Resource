@@ -1,0 +1,14 @@
+#version 1.1.0;
+
+option(single-frame-render-session) @session = [vector2 frame-size "64 48"] [string visualizer @visualizer] [string observer @observer] [string sample-source @sampler];
+observer(single-lens) @observer = [real fov-degrees 60] [vector3 pos "0 0 0"] [vector3 dir "0 0 -1"] [vector3 up-axis "0 1 0"];
+sample-source(stratified) @sampler = [integer samples 1];
+visualizer(photon-mapping) @visualizer =
+    [enum sample-filter box]
+    [enum mode probabilistic-progressive]
+    [real photon-radius 0.1]
+    [integer num-passes 8192]
+    [integer num-photons 10000]
+    [integer num-samples-per-pixel 1];
+
+#import "normal_mapped_plane.p2";
