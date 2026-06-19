@@ -1,0 +1,27 @@
+geometry(rectangle) @lightRect = [real width 3.6] [real height 3.6];
+geometry(rectangle) @maskRect = [real width 1.6] [real height 1.6];
+
+image(constant) @unitRadiance = [real-array values "1 1 1"] [enum color-space LSRGB];
+image(constant) @black = [real-array values "0"] [enum color-space LSRGB];
+image(raster-file) @spiralMask =
+    [PRI image-file :spiral_mask.jpeg]
+    [enum wrap-mode clamp-to-edge]
+    [bool is-color false];
+
+material(matte-opaque) @blackMaterial = [image albedo @black];
+
+// A large directly visible area light sits behind the mask and faces the camera.
+actor(model-light) @backLight =
+    [geometry geometry @lightRect]
+    [image emitted-energy @unitRadiance];
+translate(@backLight) = [vector3 amount "0 0 -2.5"];
+
+// The base model is phantom so only the masked wrapper contributes to the scene.
+phantom actor(model) @maskBase =
+    [geometry geometry @maskRect]
+    [material material @blackMaterial];
+translate(@maskBase) = [vector3 amount "0 0 -1.5"];
+
+actor(masked-model) @maskedQuad =
+    [actor base @maskBase]
+    [image mask @spiralMask];

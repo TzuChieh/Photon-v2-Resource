@@ -29,6 +29,7 @@ REF_SCENE_TO_OUTPUTS = {
     "lerped_lambertian_diffuse/ref_factor0p8_bvpt_65536spp.p2": ("var",),
     "lerped_lambertian_diffuse/ref_no_lerp_bneept_65536spp.p2": ("var",),
     "lerped_lambertian_diffuse/ref_factor0p5_bneept_65536spp.p2": ("var",),
+    "masked_quad_spiral/ref_bvpt_1024spp.p2": ("beauty", "var"),
     "normal_mapped_plane/ref_bvpt_32768spp.p2": ("var",),
     "normal_mapped_plane/ref_bneept_32768spp.p2": ("beauty", "var"),
     "normal_mapped_plane/ref_pppm_8192passes.p2": ("beauty",),
