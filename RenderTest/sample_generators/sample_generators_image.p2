@@ -1,0 +1,10 @@
+geometry(rectangle) @screen = [real width 2] [real height 1.125];
+image(raster-file) @kaohsiung =
+    [PRI image-file :kaohsiung.jpg]
+    [enum sample-mode nearest]
+    [enum wrap-mode clamp-to-edge];
+
+actor(model-light) @screenLight =
+    [geometry geometry @screen]
+    [image emitted-energy @kaohsiung];
+translate(@screenLight) = [vector3 amount "0 0 -1"];
