@@ -1,0 +1,11 @@
+geometry(rectangle) @backgroundRectangle = [real width 4] [real height 2.4];
+image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];
+actor(model-light) @background = [geometry geometry @backgroundRectangle][image emitted-energy @white];
+translate(@background) = [vector3 amount "0 0 -2"];
+
+geometry(sphere) @occluderSphere = [real radius 0.16];
+image(constant) @black = [real-array values "0.0"][enum color-space LSRGB];
+material(matte-opaque) @blackMaterial = [image albedo @black];
+motion(constant-velocity) @sweep = [vector3 velocity "0.45 0 0"];
+actor(model) @occluder = [geometry geometry @occluderSphere][material material @blackMaterial][motion motion @sweep];
+translate(@occluder) = [vector3 amount "-0.225 0 -1"];
