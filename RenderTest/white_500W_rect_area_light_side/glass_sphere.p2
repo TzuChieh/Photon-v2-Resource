@@ -1,7 +1,6 @@
 geometry(rectangle) @rectangle = [real width 2] [real height 1];
 geometry(sphere) @sphere = [real radius 2];
-image(constant) @lightGray = [real-array values "0.7"][enum color-space LSRGB];
-material(matte-opaque) @diffuse = [image albedo @lightGray];
+material(matte-opaque) @diffuse = [spectrum albedo "0.7"];
 
 material(ideal-substance) @glass = [enum substance dielectric][enum fresnel exact][real ior-outer 1][real ior-inner 1.7];
 

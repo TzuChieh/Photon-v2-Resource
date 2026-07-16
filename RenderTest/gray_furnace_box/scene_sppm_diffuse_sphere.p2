@@ -21,7 +21,6 @@ visualizer(photon-mapping) @visualizer =
 geometry(rectangle) @boxWall = [real width 10] [real height 10];
 material(ideal-substance) @pureAbsorption = [enum substance absorber];
 image(constant) @gray = [real-array values "0.5"][enum color-space LSRGB];
-image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];
 
 // Box wall: left
 actor(model-light) @leftWall = 
@@ -71,6 +70,6 @@ translate(@frontWall) = [vector3 amount "0 0 4.9"];
 rotate(@frontWall)    = [vector3 axis "0 1 0"] [real degrees 180];
 
 // Target object (@ origin)
-material(matte-opaque) @targetMaterial = [image albedo @white];
+material(matte-opaque) @targetMaterial = [spectrum albedo "1.0"];
 geometry(sphere) @targetGeometry = [real radius 2.5];
 actor(model) @target = [geometry geometry @targetGeometry] [material material @targetMaterial];

@@ -12,7 +12,6 @@ visualizer(path-tracing) @visualizer = [enum sample-filter gaussian] [enum estim
 geometry(rectangle) @boxWall = [real width 40] [real height 40];
 material(ideal-substance) @pureAbsorption = [enum substance absorber];
 image(constant) @gray = [real-array values "0.5"][enum color-space LSRGB];
-image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];
 
 // Box wall: left
 actor(model-light) @leftWall = 
@@ -62,6 +61,6 @@ translate(@frontWall) = [vector3 amount "0 0 18"];
 rotate(@frontWall)    = [vector3 axis "0 1 0"] [real degrees 180];
 
 // Target object (@ origin)
-material(matte-opaque) @targetMaterial = [image albedo @white];
+material(matte-opaque) @targetMaterial = [spectrum albedo "1.0"];
 geometry(sphere) @targetGeometry = [real radius 9];
 actor(model) @target = [geometry geometry @targetGeometry] [material material @targetMaterial];

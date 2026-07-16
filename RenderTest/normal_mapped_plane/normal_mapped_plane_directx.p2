@@ -1,7 +1,6 @@
 geometry(rectangle) @wall = [real width 2] [real height 2];
-image(constant) @gray = [real-array values "0.7"][enum color-space LSRGB];
 image(raster-file) @normalMap = [PRI image-file :normal_map_example_directx.png];
-material(matte-opaque) @diffuse = [image albedo @gray];
+material(matte-opaque) @diffuse = [spectrum albedo "0.7"];
 material(surface-normal-map) @normalMappedDiffuse = [material material @diffuse][image map @normalMap][enum format "directx"];
 
 actor(rectangle-light) @largeLight =

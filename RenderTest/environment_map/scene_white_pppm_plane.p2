@@ -16,9 +16,8 @@ visualizer(photon-mapping) @visualizer =
     [real photon-radius 2.0]
     [integer num-samples-per-pixel 1];
 
-image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];
 geometry(rectangle) @largeQuad = [real width 10][real height 10];
-material(matte-opaque) @pureDiffuse = [image albedo @white];
+material(matte-opaque) @pureDiffuse = [spectrum albedo "1.0"];
 
 actor(model) @obj = [geometry geometry @largeQuad][material material @pureDiffuse];
 rotate(@obj) = [vector3 axis "1 0 0"] [real degrees -90];

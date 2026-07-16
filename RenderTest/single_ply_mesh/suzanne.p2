@@ -1,6 +1,5 @@
 geometry(rectangle) @rectangle = [real width 2] [real height 1];
-image(constant) @gray = [real-array values "0.5"][enum color-space LSRGB];
-material(matte-opaque) @diffuse = [image albedo @gray];
+material(matte-opaque) @diffuse = [spectrum albedo "0.5"];
 
 // Single light shinning from top
 actor(rectangle-light) @areaLight =

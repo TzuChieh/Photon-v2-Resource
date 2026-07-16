@@ -1,16 +1,12 @@
 geometry(rectangle) @rectangle = [real width 2] [real height 1];
 geometry(sphere) @sphere = [real radius 2];
-image(constant) @white = [real-array values 1][enum color-space LSRGB];
-image(constant) @half = [real-array values 0.5][enum color-space LSRGB];
-
-image(constant) @zero = [real-array values 0][enum color-space LSRGB];
-material(matte-opaque) @diffuse1 = [image albedo @white];
-material(matte-opaque) @diffuse2 = [image albedo @white];
+material(matte-opaque) @diffuse1 = [spectrum albedo "1"];
+material(matte-opaque) @diffuse2 = [spectrum albedo "1"];
 material(binary-mixed-surface) @lerpedDiffuse =
     [enum mode lerp]
     [material material-0 @diffuse1]
     [material material-1 @diffuse2]
-    [image factor @zero];
+    [spectrum factor "0"];
 
 // Spherical light on left
 actor(sphere-light) @areaLight =
@@ -24,7 +20,7 @@ actor(model) @sphereObj = [geometry geometry @sphere][material material @lerpedD
 translate(@sphereObj) = [vector3 amount "2 1.5 -3"];
 
 // Ground
-material(matte-opaque) @groundDiffuse = [image albedo @half];
+material(matte-opaque) @groundDiffuse = [spectrum albedo "0.5"];
 actor(model) @groundObj = [geometry geometry @rectangle][material material @groundDiffuse];
 translate(@groundObj) = [vector3 amount "0 -0.5 -3"];
 rotate(@groundObj) = [vector3 axis "1 0 0"][real degrees -90];

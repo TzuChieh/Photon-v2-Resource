@@ -13,9 +13,7 @@ visualizer(photon-mapping) @visualizer =
 
 geometry(rectangle) @rectangle = [real width 2] [real height 2];
 image(raster-file) @checkerboard = [PRI image-file :checkerboard.png];
-image(constant) @black = [real-array values "0.0"][enum color-space LSRGB];
-image(constant) @white = [real-array values "1.0"][enum color-space LSRGB];
-material(matte-opaque) @pureAbsorption = [image albedo @black];
+material(matte-opaque) @pureAbsorption = [spectrum albedo "0.0"];
 
 // Using pure absorption so the wall behind the camera will not affect the final image (being radiance of value 1)
 actor(model-light) @frontLight =
@@ -26,7 +24,7 @@ actor(model-light) @frontLight =
 // Move to 1 meter in front of the camera at origin (90-deg FoV), so the 2x2 rectangle will fully fit the film
 translate(@frontLight) = [vector3 amount "0 0 -1"];
 
-material(matte-opaque) @whiteMaterial = [image albedo @white];
+material(matte-opaque) @whiteMaterial = [spectrum albedo "1.0"];
 
 // Following walls are for receiving photons
 
