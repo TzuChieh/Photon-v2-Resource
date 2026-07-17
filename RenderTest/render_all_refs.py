@@ -31,6 +31,7 @@ REF_SCENE_TO_OUTPUTS = {
     "lerped_lambertian_diffuse/ref_factor0p5_bneept_65536spp.p2": ("var",),
     "masked_quad_spiral/ref_bvpt_32768spp.p2": ("beauty", "var"),
     "motion_blur_occluder/ref_bvpt_32768spp.p2": ("beauty", "var"),
+    "noise_textures/ref_bvpt_8192spp.p2": ("beauty", "var"),
     "normal_mapped_plane/ref_bvpt_32768spp.p2": ("var",),
     "normal_mapped_plane/ref_bneept_32768spp.p2": ("beauty", "var"),
     "normal_mapped_plane/ref_pppm_8192passes.p2": ("beauty",),

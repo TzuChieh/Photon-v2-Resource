@@ -1,0 +1,19 @@
+geometry(rectangle) @panel = [real width 0.64] [real height 0.64];
+
+// A low-frequency, single-layer field exposes the underlying smooth Perlin noise.
+image(noise) @smoothNoise = [enum algorithm perlin-fbm] [enum dimensions 2d] [bool normalize true] [real frequency 2] [real num-layers 1] [real warp 0];
+
+// Additional layers introduce progressively finer detail.
+image(noise) @detailedNoise = [enum algorithm perlin-fbm] [enum dimensions 3d] [bool normalize true] [real frequency 4] [real num-layers 6] [real amplitude-ratio 0.55] [real frequency-ratio 1.99] [real warp 0];
+
+// The default zero fourth coordinate selects a stable 4D slice while warp bends the noise domain.
+image(noise) @warpedNoise = [enum algorithm perlin-fbm] [enum dimensions 4d] [bool normalize true] [real frequency 3] [real num-layers 4] [real amplitude-ratio 0.6] [real frequency-ratio 1.99] [real warp 2.5];
+
+actor(model-light) @smoothPanel = [geometry geometry @panel] [image emitted-energy @smoothNoise];
+actor(model-light) @detailedPanel = [geometry geometry @panel] [image emitted-energy @detailedNoise];
+actor(model-light) @warpedPanel = [geometry geometry @panel] [image emitted-energy @warpedNoise];
+
+// At z = -1 with a 90-degree horizontal FoV, these square panels fit with narrow separators.
+translate(@smoothPanel) = [vector3 amount "-0.68 0 -1"];
+translate(@detailedPanel) = [vector3 amount "0 0 -1"];
+translate(@warpedPanel) = [vector3 amount "0.68 0 -1"];
