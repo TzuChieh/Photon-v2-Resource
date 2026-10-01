@@ -1,0 +1,1304 @@
+// The 0.84 x 2.6 x 0.84 cuboid source is hidden and cached for all instances.
+geometry(cuboid) @heightGeometry = [vector3 size "0.84 2.6 0.84"];
+material(matte-opaque) @heightMaterial = [spectrum albedo "0.24 0.54 0.72"];
+phantom actor(model) @heightSource =
+    [geometry geometry @heightGeometry]
+    [material material @heightMaterial]
+    [bool is-instantiable-hint true];
+
+// A broad overhead emitter gives BNEEPT a large target and keeps this render inexpensive.
+actor(rectangle-light) @topLight =
+    [real width 34]
+    [real height 34]
+    [spectrum color "1 0.96 0.9"]
+    [real watts 45000];
+translate(@topLight) = [vector3 amount "0 22 0"];
+rotate(@topLight) = [vector3 axis "1 0 0"] [real degrees 90];
+
+// 1,024 cuboids form a 32 x 32 grid with 0.9 spacing.
+// Center heights range from about -1.43 to 1.45.
+packet $heightTransform0000 = [vector3 pos "-13.95 0.579549 -13.95"];
+packet $heightTransform0001 = [vector3 pos "-13.05 -0.020233 -13.95"];
+packet $heightTransform0002 = [vector3 pos "-12.15 0.505221 -13.95"];
+packet $heightTransform0003 = [vector3 pos "-11.25 1.000814 -13.95"];
+packet $heightTransform0004 = [vector3 pos "-10.35 1.244442 -13.95"];
+packet $heightTransform0005 = [vector3 pos "-9.45 0.703838 -13.95"];
+packet $heightTransform0006 = [vector3 pos "-8.55 0.446585 -13.95"];
+packet $heightTransform0007 = [vector3 pos "-7.65 0.340738 -13.95"];
+packet $heightTransform0008 = [vector3 pos "-6.75 -0.016372 -13.95"];
+packet $heightTransform0009 = [vector3 pos "-5.85 -0.3571 -13.95"];
+packet $heightTransform0010 = [vector3 pos "-4.95 -1.359495 -13.95"];
+packet $heightTransform0011 = [vector3 pos "-4.05 -1.051965 -13.95"];
+packet $heightTransform0012 = [vector3 pos "-3.15 -0.928878 -13.95"];
+packet $heightTransform0013 = [vector3 pos "-2.25 0.300706 -13.95"];
+packet $heightTransform0014 = [vector3 pos "-1.35 -0.168576 -13.95"];
+packet $heightTransform0015 = [vector3 pos "-0.45 0.899912 -13.95"];
+packet $heightTransform0016 = [vector3 pos "0.45 0.981722 -13.95"];
+packet $heightTransform0017 = [vector3 pos "1.35 1.449533 -13.95"];
+packet $heightTransform0018 = [vector3 pos "2.25 0.798536 -13.95"];
+packet $heightTransform0019 = [vector3 pos "3.15 0.907778 -13.95"];
+packet $heightTransform0020 = [vector3 pos "4.05 0.25868 -13.95"];
+packet $heightTransform0021 = [vector3 pos "4.95 -0.748919 -13.95"];
+packet $heightTransform0022 = [vector3 pos "5.85 -0.922685 -13.95"];
+packet $heightTransform0023 = [vector3 pos "6.75 -1.343482 -13.95"];
+packet $heightTransform0024 = [vector3 pos "7.65 -1.303 -13.95"];
+packet $heightTransform0025 = [vector3 pos "8.55 -0.683844 -13.95"];
+packet $heightTransform0026 = [vector3 pos "9.45 -0.550436 -13.95"];
+packet $heightTransform0027 = [vector3 pos "10.35 0.436884 -13.95"];
+packet $heightTransform0028 = [vector3 pos "11.25 -0.164199 -13.95"];
+packet $heightTransform0029 = [vector3 pos "12.15 0.68436 -13.95"];
+packet $heightTransform0030 = [vector3 pos "13.05 0.844036 -13.95"];
+packet $heightTransform0031 = [vector3 pos "13.95 1.338337 -13.95"];
+packet $heightTransform0032 = [vector3 pos "-13.95 0.080631 -13.05"];
+packet $heightTransform0033 = [vector3 pos "-13.05 0.178907 -13.05"];
+packet $heightTransform0034 = [vector3 pos "-12.15 0.514417 -13.05"];
+packet $heightTransform0035 = [vector3 pos "-11.25 1.04281 -13.05"];
+packet $heightTransform0036 = [vector3 pos "-10.35 0.508197 -13.05"];
+packet $heightTransform0037 = [vector3 pos "-9.45 0.843993 -13.05"];
+packet $heightTransform0038 = [vector3 pos "-8.55 0.237715 -13.05"];
+packet $heightTransform0039 = [vector3 pos "-7.65 0.154014 -13.05"];
+packet $heightTransform0040 = [vector3 pos "-6.75 -0.019192 -13.05"];
+packet $heightTransform0041 = [vector3 pos "-5.85 -1.194609 -13.05"];
+packet $heightTransform0042 = [vector3 pos "-4.95 -0.988871 -13.05"];
+packet $heightTransform0043 = [vector3 pos "-4.05 -0.27918 -13.05"];
+packet $heightTransform0044 = [vector3 pos "-3.15 -0.57759 -13.05"];
+packet $heightTransform0045 = [vector3 pos "-2.25 -0.339918 -13.05"];
+packet $heightTransform0046 = [vector3 pos "-1.35 0.222624 -13.05"];
+packet $heightTransform0047 = [vector3 pos "-0.45 0.532011 -13.05"];
+packet $heightTransform0048 = [vector3 pos "0.45 0.221632 -13.05"];
+packet $heightTransform0049 = [vector3 pos "1.35 1.11284 -13.05"];
+packet $heightTransform0050 = [vector3 pos "2.25 0.507685 -13.05"];
+packet $heightTransform0051 = [vector3 pos "3.15 1.083087 -13.05"];
+packet $heightTransform0052 = [vector3 pos "4.05 -0.18149 -13.05"];
+packet $heightTransform0053 = [vector3 pos "4.95 0.074884 -13.05"];
+packet $heightTransform0054 = [vector3 pos "5.85 -0.658489 -13.05"];
+packet $heightTransform0055 = [vector3 pos "6.75 -0.222851 -13.05"];
+packet $heightTransform0056 = [vector3 pos "7.65 -0.325199 -13.05"];
+packet $heightTransform0057 = [vector3 pos "8.55 -0.999477 -13.05"];
+packet $heightTransform0058 = [vector3 pos "9.45 -0.533351 -13.05"];
+packet $heightTransform0059 = [vector3 pos "10.35 -0.428612 -13.05"];
+packet $heightTransform0060 = [vector3 pos "11.25 -0.252948 -13.05"];
+packet $heightTransform0061 = [vector3 pos "12.15 0.704919 -13.05"];
+packet $heightTransform0062 = [vector3 pos "13.05 1.058642 -13.05"];
+packet $heightTransform0063 = [vector3 pos "13.95 0.63577 -13.05"];
+packet $heightTransform0064 = [vector3 pos "-13.95 -0.175262 -12.15"];
+packet $heightTransform0065 = [vector3 pos "-13.05 -0.046243 -12.15"];
+packet $heightTransform0066 = [vector3 pos "-12.15 0.802617 -12.15"];
+packet $heightTransform0067 = [vector3 pos "-11.25 1.092082 -12.15"];
+packet $heightTransform0068 = [vector3 pos "-10.35 0.754046 -12.15"];
+packet $heightTransform0069 = [vector3 pos "-9.45 0.52249 -12.15"];
+packet $heightTransform0070 = [vector3 pos "-8.55 0.331826 -12.15"];
+packet $heightTransform0071 = [vector3 pos "-7.65 0.495945 -12.15"];
+packet $heightTransform0072 = [vector3 pos "-6.75 -0.285751 -12.15"];
+packet $heightTransform0073 = [vector3 pos "-5.85 -0.198075 -12.15"];
+packet $heightTransform0074 = [vector3 pos "-4.95 -0.124905 -12.15"];
+packet $heightTransform0075 = [vector3 pos "-4.05 -0.628604 -12.15"];
+packet $heightTransform0076 = [vector3 pos "-3.15 -0.239724 -12.15"];
+packet $heightTransform0077 = [vector3 pos "-2.25 -0.460661 -12.15"];
+packet $heightTransform0078 = [vector3 pos "-1.35 0.162038 -12.15"];
+packet $heightTransform0079 = [vector3 pos "-0.45 0.637601 -12.15"];
+packet $heightTransform0080 = [vector3 pos "0.45 -0.005228 -12.15"];
+packet $heightTransform0081 = [vector3 pos "1.35 1.131409 -12.15"];
+packet $heightTransform0082 = [vector3 pos "2.25 1.082054 -12.15"];
+packet $heightTransform0083 = [vector3 pos "3.15 0.261925 -12.15"];
+packet $heightTransform0084 = [vector3 pos "4.05 -0.131563 -12.15"];
+packet $heightTransform0085 = [vector3 pos "4.95 -0.130988 -12.15"];
+packet $heightTransform0086 = [vector3 pos "5.85 -0.177696 -12.15"];
+packet $heightTransform0087 = [vector3 pos "6.75 -0.193619 -12.15"];
+packet $heightTransform0088 = [vector3 pos "7.65 -0.124556 -12.15"];
+packet $heightTransform0089 = [vector3 pos "8.55 -0.666705 -12.15"];
+packet $heightTransform0090 = [vector3 pos "9.45 -0.065528 -12.15"];
+packet $heightTransform0091 = [vector3 pos "10.35 0.463178 -12.15"];
+packet $heightTransform0092 = [vector3 pos "11.25 -0.100386 -12.15"];
+packet $heightTransform0093 = [vector3 pos "12.15 0.101995 -12.15"];
+packet $heightTransform0094 = [vector3 pos "13.05 0.752772 -12.15"];
+packet $heightTransform0095 = [vector3 pos "13.95 0.339369 -12.15"];
+packet $heightTransform0096 = [vector3 pos "-13.95 -0.187963 -11.25"];
+packet $heightTransform0097 = [vector3 pos "-13.05 -0.395442 -11.25"];
+packet $heightTransform0098 = [vector3 pos "-12.15 0.378077 -11.25"];
+packet $heightTransform0099 = [vector3 pos "-11.25 0.092855 -11.25"];
+packet $heightTransform0100 = [vector3 pos "-10.35 0.533526 -11.25"];
+packet $heightTransform0101 = [vector3 pos "-9.45 0.470597 -11.25"];
+packet $heightTransform0102 = [vector3 pos "-8.55 0.624002 -11.25"];
+packet $heightTransform0103 = [vector3 pos "-7.65 -0.004146 -11.25"];
+packet $heightTransform0104 = [vector3 pos "-6.75 -0.572706 -11.25"];
+packet $heightTransform0105 = [vector3 pos "-5.85 -0.511559 -11.25"];
+packet $heightTransform0106 = [vector3 pos "-4.95 -0.414669 -11.25"];
+packet $heightTransform0107 = [vector3 pos "-4.05 -0.456927 -11.25"];
+packet $heightTransform0108 = [vector3 pos "-3.15 0.095291 -11.25"];
+packet $heightTransform0109 = [vector3 pos "-2.25 0.376935 -11.25"];
+packet $heightTransform0110 = [vector3 pos "-1.35 -0.188985 -11.25"];
+packet $heightTransform0111 = [vector3 pos "-0.45 0.399144 -11.25"];
+packet $heightTransform0112 = [vector3 pos "0.45 0.556309 -11.25"];
+packet $heightTransform0113 = [vector3 pos "1.35 0.604466 -11.25"];
+packet $heightTransform0114 = [vector3 pos "2.25 0.001107 -11.25"];
+packet $heightTransform0115 = [vector3 pos "3.15 -0.199622 -11.25"];
+packet $heightTransform0116 = [vector3 pos "4.05 0.282124 -11.25"];
+packet $heightTransform0117 = [vector3 pos "4.95 -0.245979 -11.25"];
+packet $heightTransform0118 = [vector3 pos "5.85 -0.721126 -11.25"];
+packet $heightTransform0119 = [vector3 pos "6.75 0.065361 -11.25"];
+packet $heightTransform0120 = [vector3 pos "7.65 -0.333226 -11.25"];
+packet $heightTransform0121 = [vector3 pos "8.55 0.174426 -11.25"];
+packet $heightTransform0122 = [vector3 pos "9.45 0.329126 -11.25"];
+packet $heightTransform0123 = [vector3 pos "10.35 -0.387373 -11.25"];
+packet $heightTransform0124 = [vector3 pos "11.25 0.434602 -11.25"];
+packet $heightTransform0125 = [vector3 pos "12.15 0.362413 -11.25"];
+packet $heightTransform0126 = [vector3 pos "13.05 0.595206 -11.25"];
+packet $heightTransform0127 = [vector3 pos "13.95 0.155892 -11.25"];
+packet $heightTransform0128 = [vector3 pos "-13.95 -0.38921 -10.35"];
+packet $heightTransform0129 = [vector3 pos "-13.05 0.230827 -10.35"];
+packet $heightTransform0130 = [vector3 pos "-12.15 -0.411357 -10.35"];
+packet $heightTransform0131 = [vector3 pos "-11.25 0.183407 -10.35"];
+packet $heightTransform0132 = [vector3 pos "-10.35 0.22102 -10.35"];
+packet $heightTransform0133 = [vector3 pos "-9.45 -0.25873 -10.35"];
+packet $heightTransform0134 = [vector3 pos "-8.55 -0.503916 -10.35"];
+packet $heightTransform0135 = [vector3 pos "-7.65 -0.198075 -10.35"];
+packet $heightTransform0136 = [vector3 pos "-6.75 0.573735 -10.35"];
+packet $heightTransform0137 = [vector3 pos "-5.85 -0.112105 -10.35"];
+packet $heightTransform0138 = [vector3 pos "-4.95 -0.339765 -10.35"];
+packet $heightTransform0139 = [vector3 pos "-4.05 0.513082 -10.35"];
+packet $heightTransform0140 = [vector3 pos "-3.15 -0.50284 -10.35"];
+packet $heightTransform0141 = [vector3 pos "-2.25 -0.223963 -10.35"];
+packet $heightTransform0142 = [vector3 pos "-1.35 -0.524744 -10.35"];
+packet $heightTransform0143 = [vector3 pos "-0.45 -0.541516 -10.35"];
+packet $heightTransform0144 = [vector3 pos "0.45 -0.434193 -10.35"];
+packet $heightTransform0145 = [vector3 pos "1.35 -0.467223 -10.35"];
+packet $heightTransform0146 = [vector3 pos "2.25 -0.261807 -10.35"];
+packet $heightTransform0147 = [vector3 pos "3.15 0.034833 -10.35"];
+packet $heightTransform0148 = [vector3 pos "4.05 0.555739 -10.35"];
+packet $heightTransform0149 = [vector3 pos "4.95 -0.011573 -10.35"];
+packet $heightTransform0150 = [vector3 pos "5.85 0.074285 -10.35"];
+packet $heightTransform0151 = [vector3 pos "6.75 0.547291 -10.35"];
+packet $heightTransform0152 = [vector3 pos "7.65 0.515168 -10.35"];
+packet $heightTransform0153 = [vector3 pos "8.55 0.283595 -10.35"];
+packet $heightTransform0154 = [vector3 pos "9.45 0.30499 -10.35"];
+packet $heightTransform0155 = [vector3 pos "10.35 0.29179 -10.35"];
+packet $heightTransform0156 = [vector3 pos "11.25 0.262516 -10.35"];
+packet $heightTransform0157 = [vector3 pos "12.15 0.256189 -10.35"];
+packet $heightTransform0158 = [vector3 pos "13.05 0.286255 -10.35"];
+packet $heightTransform0159 = [vector3 pos "13.95 0.079928 -10.35"];
+packet $heightTransform0160 = [vector3 pos "-13.95 0.099769 -9.45"];
+packet $heightTransform0161 = [vector3 pos "-13.05 -0.601056 -9.45"];
+packet $heightTransform0162 = [vector3 pos "-12.15 -0.582648 -9.45"];
+packet $heightTransform0163 = [vector3 pos "-11.25 -0.795624 -9.45"];
+packet $heightTransform0164 = [vector3 pos "-10.35 -0.000305 -9.45"];
+packet $heightTransform0165 = [vector3 pos "-9.45 -0.086131 -9.45"];
+packet $heightTransform0166 = [vector3 pos "-8.55 0.44031 -9.45"];
+packet $heightTransform0167 = [vector3 pos "-7.65 -0.040779 -9.45"];
+packet $heightTransform0168 = [vector3 pos "-6.75 0.351902 -9.45"];
+packet $heightTransform0169 = [vector3 pos "-5.85 0.738728 -9.45"];
+packet $heightTransform0170 = [vector3 pos "-4.95 -0.089372 -9.45"];
+packet $heightTransform0171 = [vector3 pos "-4.05 0.041032 -9.45"];
+packet $heightTransform0172 = [vector3 pos "-3.15 -0.183743 -9.45"];
+packet $heightTransform0173 = [vector3 pos "-2.25 -0.338951 -9.45"];
+packet $heightTransform0174 = [vector3 pos "-1.35 0.250703 -9.45"];
+packet $heightTransform0175 = [vector3 pos "-0.45 -0.534089 -9.45"];
+packet $heightTransform0176 = [vector3 pos "0.45 0.134756 -9.45"];
+packet $heightTransform0177 = [vector3 pos "1.35 0.163401 -9.45"];
+packet $heightTransform0178 = [vector3 pos "2.25 -0.776796 -9.45"];
+packet $heightTransform0179 = [vector3 pos "3.15 0.012479 -9.45"];
+packet $heightTransform0180 = [vector3 pos "4.05 -0.266542 -9.45"];
+packet $heightTransform0181 = [vector3 pos "4.95 -0.267201 -9.45"];
+packet $heightTransform0182 = [vector3 pos "5.85 0.047238 -9.45"];
+packet $heightTransform0183 = [vector3 pos "6.75 0.504905 -9.45"];
+packet $heightTransform0184 = [vector3 pos "7.65 -0.101162 -9.45"];
+packet $heightTransform0185 = [vector3 pos "8.55 -0.1036 -9.45"];
+packet $heightTransform0186 = [vector3 pos "9.45 0.418857 -9.45"];
+packet $heightTransform0187 = [vector3 pos "10.35 0.548143 -9.45"];
+packet $heightTransform0188 = [vector3 pos "11.25 -0.099288 -9.45"];
+packet $heightTransform0189 = [vector3 pos "12.15 -0.453535 -9.45"];
+packet $heightTransform0190 = [vector3 pos "13.05 -0.191236 -9.45"];
+packet $heightTransform0191 = [vector3 pos "13.95 -0.581335 -9.45"];
+packet $heightTransform0192 = [vector3 pos "-13.95 0.198977 -8.55"];
+packet $heightTransform0193 = [vector3 pos "-13.05 -0.098309 -8.55"];
+packet $heightTransform0194 = [vector3 pos "-12.15 -0.655604 -8.55"];
+packet $heightTransform0195 = [vector3 pos "-11.25 -0.077622 -8.55"];
+packet $heightTransform0196 = [vector3 pos "-10.35 -1.086939 -8.55"];
+packet $heightTransform0197 = [vector3 pos "-9.45 0.055429 -8.55"];
+packet $heightTransform0198 = [vector3 pos "-8.55 -0.521119 -8.55"];
+packet $heightTransform0199 = [vector3 pos "-7.65 0.023975 -8.55"];
+packet $heightTransform0200 = [vector3 pos "-6.75 -0.140315 -8.55"];
+packet $heightTransform0201 = [vector3 pos "-5.85 0.902447 -8.55"];
+packet $heightTransform0202 = [vector3 pos "-4.95 1.049679 -8.55"];
+packet $heightTransform0203 = [vector3 pos "-4.05 0.103469 -8.55"];
+packet $heightTransform0204 = [vector3 pos "-3.15 0.263837 -8.55"];
+packet $heightTransform0205 = [vector3 pos "-2.25 -0.040386 -8.55"];
+packet $heightTransform0206 = [vector3 pos "-1.35 0.29245 -8.55"];
+packet $heightTransform0207 = [vector3 pos "-0.45 0.021189 -8.55"];
+packet $heightTransform0208 = [vector3 pos "0.45 0.018198 -8.55"];
+packet $heightTransform0209 = [vector3 pos "1.35 -0.553744 -8.55"];
+packet $heightTransform0210 = [vector3 pos "2.25 -0.124936 -8.55"];
+packet $heightTransform0211 = [vector3 pos "3.15 -0.052803 -8.55"];
+packet $heightTransform0212 = [vector3 pos "4.05 0.00328 -8.55"];
+packet $heightTransform0213 = [vector3 pos "4.95 -0.380223 -8.55"];
+packet $heightTransform0214 = [vector3 pos "5.85 0.083561 -8.55"];
+packet $heightTransform0215 = [vector3 pos "6.75 0.437341 -8.55"];
+packet $heightTransform0216 = [vector3 pos "7.65 0.918412 -8.55"];
+packet $heightTransform0217 = [vector3 pos "8.55 0.610357 -8.55"];
+packet $heightTransform0218 = [vector3 pos "9.45 0.902243 -8.55"];
+packet $heightTransform0219 = [vector3 pos "10.35 0.227429 -8.55"];
+packet $heightTransform0220 = [vector3 pos "11.25 0.320188 -8.55"];
+packet $heightTransform0221 = [vector3 pos "12.15 -0.952587 -8.55"];
+packet $heightTransform0222 = [vector3 pos "13.05 -0.081132 -8.55"];
+packet $heightTransform0223 = [vector3 pos "13.95 -0.799482 -8.55"];
+packet $heightTransform0224 = [vector3 pos "-13.95 -0.2445 -7.65"];
+packet $heightTransform0225 = [vector3 pos "-13.05 0.044065 -7.65"];
+packet $heightTransform0226 = [vector3 pos "-12.15 -0.547422 -7.65"];
+packet $heightTransform0227 = [vector3 pos "-11.25 -0.823509 -7.65"];
+packet $heightTransform0228 = [vector3 pos "-10.35 -0.495997 -7.65"];
+packet $heightTransform0229 = [vector3 pos "-9.45 -0.269376 -7.65"];
+packet $heightTransform0230 = [vector3 pos "-8.55 -0.745063 -7.65"];
+packet $heightTransform0231 = [vector3 pos "-7.65 0.550452 -7.65"];
+packet $heightTransform0232 = [vector3 pos "-6.75 0.627316 -7.65"];
+packet $heightTransform0233 = [vector3 pos "-5.85 0.825012 -7.65"];
+packet $heightTransform0234 = [vector3 pos "-4.95 0.92415 -7.65"];
+packet $heightTransform0235 = [vector3 pos "-4.05 0.787 -7.65"];
+packet $heightTransform0236 = [vector3 pos "-3.15 0.377681 -7.65"];
+packet $heightTransform0237 = [vector3 pos "-2.25 -0.014812 -7.65"];
+packet $heightTransform0238 = [vector3 pos "-1.35 -0.339842 -7.65"];
+packet $heightTransform0239 = [vector3 pos "-0.45 -0.103827 -7.65"];
+packet $heightTransform0240 = [vector3 pos "0.45 -0.931712 -7.65"];
+packet $heightTransform0241 = [vector3 pos "1.35 -0.398665 -7.65"];
+packet $heightTransform0242 = [vector3 pos "2.25 -0.240926 -7.65"];
+packet $heightTransform0243 = [vector3 pos "3.15 -0.010114 -7.65"];
+packet $heightTransform0244 = [vector3 pos "4.05 -0.269707 -7.65"];
+packet $heightTransform0245 = [vector3 pos "4.95 0.552257 -7.65"];
+packet $heightTransform0246 = [vector3 pos "5.85 0.71486 -7.65"];
+packet $heightTransform0247 = [vector3 pos "6.75 0.899726 -7.65"];
+packet $heightTransform0248 = [vector3 pos "7.65 0.74106 -7.65"];
+packet $heightTransform0249 = [vector3 pos "8.55 1.279936 -7.65"];
+packet $heightTransform0250 = [vector3 pos "9.45 0.134067 -7.65"];
+packet $heightTransform0251 = [vector3 pos "10.35 0.154504 -7.65"];
+packet $heightTransform0252 = [vector3 pos "11.25 0.302284 -7.65"];
+packet $heightTransform0253 = [vector3 pos "12.15 -0.420464 -7.65"];
+packet $heightTransform0254 = [vector3 pos "13.05 -0.736772 -7.65"];
+packet $heightTransform0255 = [vector3 pos "13.95 -1.344761 -7.65"];
+packet $heightTransform0256 = [vector3 pos "-13.95 0.446591 -6.75"];
+packet $heightTransform0257 = [vector3 pos "-13.05 -0.373648 -6.75"];
+packet $heightTransform0258 = [vector3 pos "-12.15 -0.376471 -6.75"];
+packet $heightTransform0259 = [vector3 pos "-11.25 -0.882587 -6.75"];
+packet $heightTransform0260 = [vector3 pos "-10.35 -0.623489 -6.75"];
+packet $heightTransform0261 = [vector3 pos "-9.45 -0.847122 -6.75"];
+packet $heightTransform0262 = [vector3 pos "-8.55 -0.830915 -6.75"];
+packet $heightTransform0263 = [vector3 pos "-7.65 -0.285864 -6.75"];
+packet $heightTransform0264 = [vector3 pos "-6.75 0.391181 -6.75"];
+packet $heightTransform0265 = [vector3 pos "-5.85 1.295645 -6.75"];
+packet $heightTransform0266 = [vector3 pos "-4.95 0.452895 -6.75"];
+packet $heightTransform0267 = [vector3 pos "-4.05 0.277138 -6.75"];
+packet $heightTransform0268 = [vector3 pos "-3.15 0.571322 -6.75"];
+packet $heightTransform0269 = [vector3 pos "-2.25 0.519714 -6.75"];
+packet $heightTransform0270 = [vector3 pos "-1.35 -0.663438 -6.75"];
+packet $heightTransform0271 = [vector3 pos "-0.45 -0.546376 -6.75"];
+packet $heightTransform0272 = [vector3 pos "0.45 -1.098879 -6.75"];
+packet $heightTransform0273 = [vector3 pos "1.35 -1.307073 -6.75"];
+packet $heightTransform0274 = [vector3 pos "2.25 -1.057755 -6.75"];
+packet $heightTransform0275 = [vector3 pos "3.15 -1.061494 -6.75"];
+packet $heightTransform0276 = [vector3 pos "4.05 -0.645912 -6.75"];
+packet $heightTransform0277 = [vector3 pos "4.95 0.787736 -6.75"];
+packet $heightTransform0278 = [vector3 pos "5.85 1.064034 -6.75"];
+packet $heightTransform0279 = [vector3 pos "6.75 0.798683 -6.75"];
+packet $heightTransform0280 = [vector3 pos "7.65 0.542645 -6.75"];
+packet $heightTransform0281 = [vector3 pos "8.55 1.331447 -6.75"];
+packet $heightTransform0282 = [vector3 pos "9.45 0.002102 -6.75"];
+packet $heightTransform0283 = [vector3 pos "10.35 0.452532 -6.75"];
+packet $heightTransform0284 = [vector3 pos "11.25 -0.17589 -6.75"];
+packet $heightTransform0285 = [vector3 pos "12.15 -0.520814 -6.75"];
+packet $heightTransform0286 = [vector3 pos "13.05 -0.34004 -6.75"];
+packet $heightTransform0287 = [vector3 pos "13.95 -1.424524 -6.75"];
+packet $heightTransform0288 = [vector3 pos "-13.95 -0.489976 -5.85"];
+packet $heightTransform0289 = [vector3 pos "-13.05 -0.322087 -5.85"];
+packet $heightTransform0290 = [vector3 pos "-12.15 -0.52309 -5.85"];
+packet $heightTransform0291 = [vector3 pos "-11.25 -0.462657 -5.85"];
+packet $heightTransform0292 = [vector3 pos "-10.35 -0.829852 -5.85"];
+packet $heightTransform0293 = [vector3 pos "-9.45 -0.258003 -5.85"];
+packet $heightTransform0294 = [vector3 pos "-8.55 -0.763272 -5.85"];
+packet $heightTransform0295 = [vector3 pos "-7.65 0.616425 -5.85"];
+packet $heightTransform0296 = [vector3 pos "-6.75 0.772057 -5.85"];
+packet $heightTransform0297 = [vector3 pos "-5.85 0.992312 -5.85"];
+packet $heightTransform0298 = [vector3 pos "-4.95 0.836115 -5.85"];
+packet $heightTransform0299 = [vector3 pos "-4.05 0.744262 -5.85"];
+packet $heightTransform0300 = [vector3 pos "-3.15 0.801602 -5.85"];
+packet $heightTransform0301 = [vector3 pos "-2.25 0.426018 -5.85"];
+packet $heightTransform0302 = [vector3 pos "-1.35 -0.515392 -5.85"];
+packet $heightTransform0303 = [vector3 pos "-0.45 -0.239698 -5.85"];
+packet $heightTransform0304 = [vector3 pos "0.45 -0.238491 -5.85"];
+packet $heightTransform0305 = [vector3 pos "1.35 -0.569224 -5.85"];
+packet $heightTransform0306 = [vector3 pos "2.25 -1.003706 -5.85"];
+packet $heightTransform0307 = [vector3 pos "3.15 -0.146496 -5.85"];
+packet $heightTransform0308 = [vector3 pos "4.05 -0.372873 -5.85"];
+packet $heightTransform0309 = [vector3 pos "4.95 0.149678 -5.85"];
+packet $heightTransform0310 = [vector3 pos "5.85 1.037036 -5.85"];
+packet $heightTransform0311 = [vector3 pos "6.75 1.216707 -5.85"];
+packet $heightTransform0312 = [vector3 pos "7.65 0.956928 -5.85"];
+packet $heightTransform0313 = [vector3 pos "8.55 0.518965 -5.85"];
+packet $heightTransform0314 = [vector3 pos "9.45 0.255618 -5.85"];
+packet $heightTransform0315 = [vector3 pos "10.35 0.402626 -5.85"];
+packet $heightTransform0316 = [vector3 pos "11.25 -0.504497 -5.85"];
+packet $heightTransform0317 = [vector3 pos "12.15 -0.823801 -5.85"];
+packet $heightTransform0318 = [vector3 pos "13.05 -0.670387 -5.85"];
+packet $heightTransform0319 = [vector3 pos "13.95 -0.431391 -5.85"];
+packet $heightTransform0320 = [vector3 pos "-13.95 -0.549816 -4.95"];
+packet $heightTransform0321 = [vector3 pos "-13.05 -0.779754 -4.95"];
+packet $heightTransform0322 = [vector3 pos "-12.15 -0.018656 -4.95"];
+packet $heightTransform0323 = [vector3 pos "-11.25 -0.162777 -4.95"];
+packet $heightTransform0324 = [vector3 pos "-10.35 -1.103643 -4.95"];
+packet $heightTransform0325 = [vector3 pos "-9.45 -0.791833 -4.95"];
+packet $heightTransform0326 = [vector3 pos "-8.55 0.331276 -4.95"];
+packet $heightTransform0327 = [vector3 pos "-7.65 -0.043583 -4.95"];
+packet $heightTransform0328 = [vector3 pos "-6.75 -0.202189 -4.95"];
+packet $heightTransform0329 = [vector3 pos "-5.85 0.340153 -4.95"];
+packet $heightTransform0330 = [vector3 pos "-4.95 0.395312 -4.95"];
+packet $heightTransform0331 = [vector3 pos "-4.05 0.462378 -4.95"];
+packet $heightTransform0332 = [vector3 pos "-3.15 0.447838 -4.95"];
+packet $heightTransform0333 = [vector3 pos "-2.25 0.147862 -4.95"];
+packet $heightTransform0334 = [vector3 pos "-1.35 0.232205 -4.95"];
+packet $heightTransform0335 = [vector3 pos "-0.45 -0.329517 -4.95"];
+packet $heightTransform0336 = [vector3 pos "0.45 -0.227243 -4.95"];
+packet $heightTransform0337 = [vector3 pos "1.35 -0.829607 -4.95"];
+packet $heightTransform0338 = [vector3 pos "2.25 -0.19439 -4.95"];
+packet $heightTransform0339 = [vector3 pos "3.15 -0.001434 -4.95"];
+packet $heightTransform0340 = [vector3 pos "4.05 -0.378581 -4.95"];
+packet $heightTransform0341 = [vector3 pos "4.95 -0.303204 -4.95"];
+packet $heightTransform0342 = [vector3 pos "5.85 0.652719 -4.95"];
+packet $heightTransform0343 = [vector3 pos "6.75 0.733754 -4.95"];
+packet $heightTransform0344 = [vector3 pos "7.65 0.784134 -4.95"];
+packet $heightTransform0345 = [vector3 pos "8.55 0.848315 -4.95"];
+packet $heightTransform0346 = [vector3 pos "9.45 0.035905 -4.95"];
+packet $heightTransform0347 = [vector3 pos "10.35 -0.289117 -4.95"];
+packet $heightTransform0348 = [vector3 pos "11.25 -0.190597 -4.95"];
+packet $heightTransform0349 = [vector3 pos "12.15 -0.607283 -4.95"];
+packet $heightTransform0350 = [vector3 pos "13.05 -0.400427 -4.95"];
+packet $heightTransform0351 = [vector3 pos "13.95 -0.649754 -4.95"];
+packet $heightTransform0352 = [vector3 pos "-13.95 -0.415425 -4.05"];
+packet $heightTransform0353 = [vector3 pos "-13.05 0.016112 -4.05"];
+packet $heightTransform0354 = [vector3 pos "-12.15 -0.368851 -4.05"];
+packet $heightTransform0355 = [vector3 pos "-11.25 -0.231306 -4.05"];
+packet $heightTransform0356 = [vector3 pos "-10.35 -0.101457 -4.05"];
+packet $heightTransform0357 = [vector3 pos "-9.45 -0.558099 -4.05"];
+packet $heightTransform0358 = [vector3 pos "-8.55 0.002407 -4.05"];
+packet $heightTransform0359 = [vector3 pos "-7.65 0.254279 -4.05"];
+packet $heightTransform0360 = [vector3 pos "-6.75 0.464509 -4.05"];
+packet $heightTransform0361 = [vector3 pos "-5.85 0.745757 -4.05"];
+packet $heightTransform0362 = [vector3 pos "-4.95 0.708379 -4.05"];
+packet $heightTransform0363 = [vector3 pos "-4.05 -0.209802 -4.05"];
+packet $heightTransform0364 = [vector3 pos "-3.15 -0.11707 -4.05"];
+packet $heightTransform0365 = [vector3 pos "-2.25 0.181255 -4.05"];
+packet $heightTransform0366 = [vector3 pos "-1.35 -0.185293 -4.05"];
+packet $heightTransform0367 = [vector3 pos "-0.45 -0.628069 -4.05"];
+packet $heightTransform0368 = [vector3 pos "0.45 -0.295154 -4.05"];
+packet $heightTransform0369 = [vector3 pos "1.35 -0.060001 -4.05"];
+packet $heightTransform0370 = [vector3 pos "2.25 0.176209 -4.05"];
+packet $heightTransform0371 = [vector3 pos "3.15 0.27782 -4.05"];
+packet $heightTransform0372 = [vector3 pos "4.05 -0.139921 -4.05"];
+packet $heightTransform0373 = [vector3 pos "4.95 0.376134 -4.05"];
+packet $heightTransform0374 = [vector3 pos "5.85 0.291184 -4.05"];
+packet $heightTransform0375 = [vector3 pos "6.75 0.823198 -4.05"];
+packet $heightTransform0376 = [vector3 pos "7.65 0.224658 -4.05"];
+packet $heightTransform0377 = [vector3 pos "8.55 0.108112 -4.05"];
+packet $heightTransform0378 = [vector3 pos "9.45 -0.022475 -4.05"];
+packet $heightTransform0379 = [vector3 pos "10.35 -0.116373 -4.05"];
+packet $heightTransform0380 = [vector3 pos "11.25 -0.662034 -4.05"];
+packet $heightTransform0381 = [vector3 pos "12.15 0.121188 -4.05"];
+packet $heightTransform0382 = [vector3 pos "13.05 0.126103 -4.05"];
+packet $heightTransform0383 = [vector3 pos "13.95 -0.172596 -4.05"];
+packet $heightTransform0384 = [vector3 pos "-13.95 0.154823 -3.15"];
+packet $heightTransform0385 = [vector3 pos "-13.05 0.314493 -3.15"];
+packet $heightTransform0386 = [vector3 pos "-12.15 -0.339647 -3.15"];
+packet $heightTransform0387 = [vector3 pos "-11.25 0.367711 -3.15"];
+packet $heightTransform0388 = [vector3 pos "-10.35 -0.579979 -3.15"];
+packet $heightTransform0389 = [vector3 pos "-9.45 -0.39844 -3.15"];
+packet $heightTransform0390 = [vector3 pos "-8.55 0.363346 -3.15"];
+packet $heightTransform0391 = [vector3 pos "-7.65 0.053248 -3.15"];
+packet $heightTransform0392 = [vector3 pos "-6.75 0.278497 -3.15"];
+packet $heightTransform0393 = [vector3 pos "-5.85 -0.380329 -3.15"];
+packet $heightTransform0394 = [vector3 pos "-4.95 -0.41456 -3.15"];
+packet $heightTransform0395 = [vector3 pos "-4.05 -0.061173 -3.15"];
+packet $heightTransform0396 = [vector3 pos "-3.15 -0.197085 -3.15"];
+packet $heightTransform0397 = [vector3 pos "-2.25 0.219602 -3.15"];
+packet $heightTransform0398 = [vector3 pos "-1.35 -0.076431 -3.15"];
+packet $heightTransform0399 = [vector3 pos "-0.45 -0.536521 -3.15"];
+packet $heightTransform0400 = [vector3 pos "0.45 -0.201639 -3.15"];
+packet $heightTransform0401 = [vector3 pos "1.35 -0.530898 -3.15"];
+packet $heightTransform0402 = [vector3 pos "2.25 0.139369 -3.15"];
+packet $heightTransform0403 = [vector3 pos "3.15 0.2638 -3.15"];
+packet $heightTransform0404 = [vector3 pos "4.05 -0.089446 -3.15"];
+packet $heightTransform0405 = [vector3 pos "4.95 0.29174 -3.15"];
+packet $heightTransform0406 = [vector3 pos "5.85 -0.504982 -3.15"];
+packet $heightTransform0407 = [vector3 pos "6.75 -0.098908 -3.15"];
+packet $heightTransform0408 = [vector3 pos "7.65 -0.425832 -3.15"];
+packet $heightTransform0409 = [vector3 pos "8.55 0.044544 -3.15"];
+packet $heightTransform0410 = [vector3 pos "9.45 -0.288521 -3.15"];
+packet $heightTransform0411 = [vector3 pos "10.35 -0.106665 -3.15"];
+packet $heightTransform0412 = [vector3 pos "11.25 0.520768 -3.15"];
+packet $heightTransform0413 = [vector3 pos "12.15 -0.290379 -3.15"];
+packet $heightTransform0414 = [vector3 pos "13.05 0.166086 -3.15"];
+packet $heightTransform0415 = [vector3 pos "13.95 0.447415 -3.15"];
+packet $heightTransform0416 = [vector3 pos "-13.95 0.54134 -2.25"];
+packet $heightTransform0417 = [vector3 pos "-13.05 -0.291952 -2.25"];
+packet $heightTransform0418 = [vector3 pos "-12.15 0.119137 -2.25"];
+packet $heightTransform0419 = [vector3 pos "-11.25 0.18979 -2.25"];
+packet $heightTransform0420 = [vector3 pos "-10.35 0.111248 -2.25"];
+packet $heightTransform0421 = [vector3 pos "-9.45 0.290921 -2.25"];
+packet $heightTransform0422 = [vector3 pos "-8.55 -0.325453 -2.25"];
+packet $heightTransform0423 = [vector3 pos "-7.65 -0.198284 -2.25"];
+packet $heightTransform0424 = [vector3 pos "-6.75 0.352993 -2.25"];
+packet $heightTransform0425 = [vector3 pos "-5.85 -0.383607 -2.25"];
+packet $heightTransform0426 = [vector3 pos "-4.95 -0.64542 -2.25"];
+packet $heightTransform0427 = [vector3 pos "-4.05 -0.529049 -2.25"];
+packet $heightTransform0428 = [vector3 pos "-3.15 -0.064091 -2.25"];
+packet $heightTransform0429 = [vector3 pos "-2.25 -0.530629 -2.25"];
+packet $heightTransform0430 = [vector3 pos "-1.35 0.172085 -2.25"];
+packet $heightTransform0431 = [vector3 pos "-0.45 0.407404 -2.25"];
+packet $heightTransform0432 = [vector3 pos "0.45 0.714368 -2.25"];
+packet $heightTransform0433 = [vector3 pos "1.35 0.021781 -2.25"];
+packet $heightTransform0434 = [vector3 pos "2.25 -0.28733 -2.25"];
+packet $heightTransform0435 = [vector3 pos "3.15 0.73282 -2.25"];
+packet $heightTransform0436 = [vector3 pos "4.05 -0.296707 -2.25"];
+packet $heightTransform0437 = [vector3 pos "4.95 -0.461379 -2.25"];
+packet $heightTransform0438 = [vector3 pos "5.85 -0.505276 -2.25"];
+packet $heightTransform0439 = [vector3 pos "6.75 0.161656 -2.25"];
+packet $heightTransform0440 = [vector3 pos "7.65 -0.04364 -2.25"];
+packet $heightTransform0441 = [vector3 pos "8.55 0.113316 -2.25"];
+packet $heightTransform0442 = [vector3 pos "9.45 0.091741 -2.25"];
+packet $heightTransform0443 = [vector3 pos "10.35 -0.03686 -2.25"];
+packet $heightTransform0444 = [vector3 pos "11.25 0.605616 -2.25"];
+packet $heightTransform0445 = [vector3 pos "12.15 0.125241 -2.25"];
+packet $heightTransform0446 = [vector3 pos "13.05 0.398501 -2.25"];
+packet $heightTransform0447 = [vector3 pos "13.95 0.266227 -2.25"];
+packet $heightTransform0448 = [vector3 pos "-13.95 -0.018418 -1.35"];
+packet $heightTransform0449 = [vector3 pos "-13.05 -0.068209 -1.35"];
+packet $heightTransform0450 = [vector3 pos "-12.15 0.436913 -1.35"];
+packet $heightTransform0451 = [vector3 pos "-11.25 0.235377 -1.35"];
+packet $heightTransform0452 = [vector3 pos "-10.35 0.352266 -1.35"];
+packet $heightTransform0453 = [vector3 pos "-9.45 -0.076055 -1.35"];
+packet $heightTransform0454 = [vector3 pos "-8.55 0.480647 -1.35"];
+packet $heightTransform0455 = [vector3 pos "-7.65 0.300095 -1.35"];
+packet $heightTransform0456 = [vector3 pos "-6.75 0.207237 -1.35"];
+packet $heightTransform0457 = [vector3 pos "-5.85 -0.754852 -1.35"];
+packet $heightTransform0458 = [vector3 pos "-4.95 -0.260337 -1.35"];
+packet $heightTransform0459 = [vector3 pos "-4.05 -1.119465 -1.35"];
+packet $heightTransform0460 = [vector3 pos "-3.15 -0.38564 -1.35"];
+packet $heightTransform0461 = [vector3 pos "-2.25 0.106517 -1.35"];
+packet $heightTransform0462 = [vector3 pos "-1.35 0.396321 -1.35"];
+packet $heightTransform0463 = [vector3 pos "-0.45 0.915571 -1.35"];
+packet $heightTransform0464 = [vector3 pos "0.45 1.014892 -1.35"];
+packet $heightTransform0465 = [vector3 pos "1.35 0.66124 -1.35"];
+packet $heightTransform0466 = [vector3 pos "2.25 0.589295 -1.35"];
+packet $heightTransform0467 = [vector3 pos "3.15 0.629858 -1.35"];
+packet $heightTransform0468 = [vector3 pos "4.05 -0.139422 -1.35"];
+packet $heightTransform0469 = [vector3 pos "4.95 0.09742 -1.35"];
+packet $heightTransform0470 = [vector3 pos "5.85 -0.128691 -1.35"];
+packet $heightTransform0471 = [vector3 pos "6.75 -0.21052 -1.35"];
+packet $heightTransform0472 = [vector3 pos "7.65 -0.159627 -1.35"];
+packet $heightTransform0473 = [vector3 pos "8.55 -0.537069 -1.35"];
+packet $heightTransform0474 = [vector3 pos "9.45 -0.159325 -1.35"];
+packet $heightTransform0475 = [vector3 pos "10.35 -0.090796 -1.35"];
+packet $heightTransform0476 = [vector3 pos "11.25 0.553502 -1.35"];
+packet $heightTransform0477 = [vector3 pos "12.15 0.555699 -1.35"];
+packet $heightTransform0478 = [vector3 pos "13.05 0.475415 -1.35"];
+packet $heightTransform0479 = [vector3 pos "13.95 0.636706 -1.35"];
+packet $heightTransform0480 = [vector3 pos "-13.95 0.360009 -0.45"];
+packet $heightTransform0481 = [vector3 pos "-13.05 0.656708 -0.45"];
+packet $heightTransform0482 = [vector3 pos "-12.15 1.015463 -0.45"];
+packet $heightTransform0483 = [vector3 pos "-11.25 0.715576 -0.45"];
+packet $heightTransform0484 = [vector3 pos "-10.35 0.980793 -0.45"];
+packet $heightTransform0485 = [vector3 pos "-9.45 0.517449 -0.45"];
+packet $heightTransform0486 = [vector3 pos "-8.55 0.186973 -0.45"];
+packet $heightTransform0487 = [vector3 pos "-7.65 0.325366 -0.45"];
+packet $heightTransform0488 = [vector3 pos "-6.75 -0.384713 -0.45"];
+packet $heightTransform0489 = [vector3 pos "-5.85 -1.028897 -0.45"];
+packet $heightTransform0490 = [vector3 pos "-4.95 -1.379156 -0.45"];
+packet $heightTransform0491 = [vector3 pos "-4.05 -0.314454 -0.45"];
+packet $heightTransform0492 = [vector3 pos "-3.15 -0.720302 -0.45"];
+packet $heightTransform0493 = [vector3 pos "-2.25 -0.583202 -0.45"];
+packet $heightTransform0494 = [vector3 pos "-1.35 -0.039873 -0.45"];
+packet $heightTransform0495 = [vector3 pos "-0.45 1.034385 -0.45"];
+packet $heightTransform0496 = [vector3 pos "0.45 0.227568 -0.45"];
+packet $heightTransform0497 = [vector3 pos "1.35 1.10605 -0.45"];
+packet $heightTransform0498 = [vector3 pos "2.25 0.8568 -0.45"];
+packet $heightTransform0499 = [vector3 pos "3.15 0.395402 -0.45"];
+packet $heightTransform0500 = [vector3 pos "4.05 0.6351 -0.45"];
+packet $heightTransform0501 = [vector3 pos "4.95 0.247996 -0.45"];
+packet $heightTransform0502 = [vector3 pos "5.85 -0.873876 -0.45"];
+packet $heightTransform0503 = [vector3 pos "6.75 -0.425788 -0.45"];
+packet $heightTransform0504 = [vector3 pos "7.65 -0.83919 -0.45"];
+packet $heightTransform0505 = [vector3 pos "8.55 -0.534344 -0.45"];
+packet $heightTransform0506 = [vector3 pos "9.45 -0.702614 -0.45"];
+packet $heightTransform0507 = [vector3 pos "10.35 0.224645 -0.45"];
+packet $heightTransform0508 = [vector3 pos "11.25 0.110272 -0.45"];
+packet $heightTransform0509 = [vector3 pos "12.15 0.245104 -0.45"];
+packet $heightTransform0510 = [vector3 pos "13.05 1.334176 -0.45"];
+packet $heightTransform0511 = [vector3 pos "13.95 0.623574 -0.45"];
+packet $heightTransform0512 = [vector3 pos "-13.95 0.441549 0.45"];
+packet $heightTransform0513 = [vector3 pos "-13.05 0.137466 0.45"];
+packet $heightTransform0514 = [vector3 pos "-12.15 0.391202 0.45"];
+packet $heightTransform0515 = [vector3 pos "-11.25 1.206106 0.45"];
+packet $heightTransform0516 = [vector3 pos "-10.35 1.370423 0.45"];
+packet $heightTransform0517 = [vector3 pos "-9.45 0.477738 0.45"];
+packet $heightTransform0518 = [vector3 pos "-8.55 0.123127 0.45"];
+packet $heightTransform0519 = [vector3 pos "-7.65 -0.08259 0.45"];
+packet $heightTransform0520 = [vector3 pos "-6.75 -0.87414 0.45"];
+packet $heightTransform0521 = [vector3 pos "-5.85 -0.533104 0.45"];
+packet $heightTransform0522 = [vector3 pos "-4.95 -1.264811 0.45"];
+packet $heightTransform0523 = [vector3 pos "-4.05 -1.358962 0.45"];
+packet $heightTransform0524 = [vector3 pos "-3.15 -0.394056 0.45"];
+packet $heightTransform0525 = [vector3 pos "-2.25 0.121252 0.45"];
+packet $heightTransform0526 = [vector3 pos "-1.35 0.065383 0.45"];
+packet $heightTransform0527 = [vector3 pos "-0.45 0.731096 0.45"];
+packet $heightTransform0528 = [vector3 pos "0.45 0.377734 0.45"];
+packet $heightTransform0529 = [vector3 pos "1.35 1.106156 0.45"];
+packet $heightTransform0530 = [vector3 pos "2.25 0.728887 0.45"];
+packet $heightTransform0531 = [vector3 pos "3.15 0.063792 0.45"];
+packet $heightTransform0532 = [vector3 pos "4.05 -0.364387 0.45"];
+packet $heightTransform0533 = [vector3 pos "4.95 -0.770321 0.45"];
+packet $heightTransform0534 = [vector3 pos "5.85 -0.419574 0.45"];
+packet $heightTransform0535 = [vector3 pos "6.75 -0.320994 0.45"];
+packet $heightTransform0536 = [vector3 pos "7.65 -0.833589 0.45"];
+packet $heightTransform0537 = [vector3 pos "8.55 -1.323166 0.45"];
+packet $heightTransform0538 = [vector3 pos "9.45 0.004234 0.45"];
+packet $heightTransform0539 = [vector3 pos "10.35 -0.698584 0.45"];
+packet $heightTransform0540 = [vector3 pos "11.25 -0.157204 0.45"];
+packet $heightTransform0541 = [vector3 pos "12.15 0.747264 0.45"];
+packet $heightTransform0542 = [vector3 pos "13.05 0.799626 0.45"];
+packet $heightTransform0543 = [vector3 pos "13.95 0.672212 0.45"];
+packet $heightTransform0544 = [vector3 pos "-13.95 -0.325528 1.35"];
+packet $heightTransform0545 = [vector3 pos "-13.05 0.575465 1.35"];
+packet $heightTransform0546 = [vector3 pos "-12.15 0.105417 1.35"];
+packet $heightTransform0547 = [vector3 pos "-11.25 0.357109 1.35"];
+packet $heightTransform0548 = [vector3 pos "-10.35 1.380785 1.35"];
+packet $heightTransform0549 = [vector3 pos "-9.45 0.720468 1.35"];
+packet $heightTransform0550 = [vector3 pos "-8.55 -0.206568 1.35"];
+packet $heightTransform0551 = [vector3 pos "-7.65 0.214827 1.35"];
+packet $heightTransform0552 = [vector3 pos "-6.75 -0.512644 1.35"];
+packet $heightTransform0553 = [vector3 pos "-5.85 -1.166399 1.35"];
+packet $heightTransform0554 = [vector3 pos "-4.95 -1.129266 1.35"];
+packet $heightTransform0555 = [vector3 pos "-4.05 -1.1455 1.35"];
+packet $heightTransform0556 = [vector3 pos "-3.15 -0.355367 1.35"];
+packet $heightTransform0557 = [vector3 pos "-2.25 -0.669751 1.35"];
+packet $heightTransform0558 = [vector3 pos "-1.35 -0.353728 1.35"];
+packet $heightTransform0559 = [vector3 pos "-0.45 0.656766 1.35"];
+packet $heightTransform0560 = [vector3 pos "0.45 0.421055 1.35"];
+packet $heightTransform0561 = [vector3 pos "1.35 0.977852 1.35"];
+packet $heightTransform0562 = [vector3 pos "2.25 0.948478 1.35"];
+packet $heightTransform0563 = [vector3 pos "3.15 0.766101 1.35"];
+packet $heightTransform0564 = [vector3 pos "4.05 0.53289 1.35"];
+packet $heightTransform0565 = [vector3 pos "4.95 0.290963 1.35"];
+packet $heightTransform0566 = [vector3 pos "5.85 -0.744516 1.35"];
+packet $heightTransform0567 = [vector3 pos "6.75 -0.352059 1.35"];
+packet $heightTransform0568 = [vector3 pos "7.65 -0.683682 1.35"];
+packet $heightTransform0569 = [vector3 pos "8.55 -0.986801 1.35"];
+packet $heightTransform0570 = [vector3 pos "9.45 -0.803785 1.35"];
+packet $heightTransform0571 = [vector3 pos "10.35 0.336193 1.35"];
+packet $heightTransform0572 = [vector3 pos "11.25 0.131703 1.35"];
+packet $heightTransform0573 = [vector3 pos "12.15 0.367143 1.35"];
+packet $heightTransform0574 = [vector3 pos "13.05 0.641203 1.35"];
+packet $heightTransform0575 = [vector3 pos "13.95 0.887972 1.35"];
+packet $heightTransform0576 = [vector3 pos "-13.95 -0.308352 2.25"];
+packet $heightTransform0577 = [vector3 pos "-13.05 0.724766 2.25"];
+packet $heightTransform0578 = [vector3 pos "-12.15 0.922258 2.25"];
+packet $heightTransform0579 = [vector3 pos "-11.25 0.102223 2.25"];
+packet $heightTransform0580 = [vector3 pos "-10.35 1.020243 2.25"];
+packet $heightTransform0581 = [vector3 pos "-9.45 0.315954 2.25"];
+packet $heightTransform0582 = [vector3 pos "-8.55 0.474353 2.25"];
+packet $heightTransform0583 = [vector3 pos "-7.65 0.024565 2.25"];
+packet $heightTransform0584 = [vector3 pos "-6.75 -0.1925 2.25"];
+packet $heightTransform0585 = [vector3 pos "-5.85 -0.351339 2.25"];
+packet $heightTransform0586 = [vector3 pos "-4.95 -0.508645 2.25"];
+packet $heightTransform0587 = [vector3 pos "-4.05 -0.15659 2.25"];
+packet $heightTransform0588 = [vector3 pos "-3.15 -0.15331 2.25"];
+packet $heightTransform0589 = [vector3 pos "-2.25 -0.272907 2.25"];
+packet $heightTransform0590 = [vector3 pos "-1.35 -0.203966 2.25"];
+packet $heightTransform0591 = [vector3 pos "-0.45 0.287289 2.25"];
+packet $heightTransform0592 = [vector3 pos "0.45 1.116788 2.25"];
+packet $heightTransform0593 = [vector3 pos "1.35 0.435656 2.25"];
+packet $heightTransform0594 = [vector3 pos "2.25 0.943703 2.25"];
+packet $heightTransform0595 = [vector3 pos "3.15 0.435062 2.25"];
+packet $heightTransform0596 = [vector3 pos "4.05 0.669837 2.25"];
+packet $heightTransform0597 = [vector3 pos "4.95 0.145003 2.25"];
+packet $heightTransform0598 = [vector3 pos "5.85 -0.41137 2.25"];
+packet $heightTransform0599 = [vector3 pos "6.75 -0.843574 2.25"];
+packet $heightTransform0600 = [vector3 pos "7.65 -0.843852 2.25"];
+packet $heightTransform0601 = [vector3 pos "8.55 -0.993838 2.25"];
+packet $heightTransform0602 = [vector3 pos "9.45 -0.435703 2.25"];
+packet $heightTransform0603 = [vector3 pos "10.35 0.133447 2.25"];
+packet $heightTransform0604 = [vector3 pos "11.25 0.036355 2.25"];
+packet $heightTransform0605 = [vector3 pos "12.15 0.06433 2.25"];
+packet $heightTransform0606 = [vector3 pos "13.05 0.459573 2.25"];
+packet $heightTransform0607 = [vector3 pos "13.95 0.227178 2.25"];
+packet $heightTransform0608 = [vector3 pos "-13.95 0.282659 3.15"];
+packet $heightTransform0609 = [vector3 pos "-13.05 0.415497 3.15"];
+packet $heightTransform0610 = [vector3 pos "-12.15 0.846209 3.15"];
+packet $heightTransform0611 = [vector3 pos "-11.25 0.760415 3.15"];
+packet $heightTransform0612 = [vector3 pos "-10.35 0.143668 3.15"];
+packet $heightTransform0613 = [vector3 pos "-9.45 -0.225404 3.15"];
+packet $heightTransform0614 = [vector3 pos "-8.55 0.513432 3.15"];
+packet $heightTransform0615 = [vector3 pos "-7.65 0.406645 3.15"];
+packet $heightTransform0616 = [vector3 pos "-6.75 0.287568 3.15"];
+packet $heightTransform0617 = [vector3 pos "-5.85 -0.804023 3.15"];
+packet $heightTransform0618 = [vector3 pos "-4.95 -0.88269 3.15"];
+packet $heightTransform0619 = [vector3 pos "-4.05 -0.808201 3.15"];
+packet $heightTransform0620 = [vector3 pos "-3.15 -0.512691 3.15"];
+packet $heightTransform0621 = [vector3 pos "-2.25 -0.207854 3.15"];
+packet $heightTransform0622 = [vector3 pos "-1.35 -0.404742 3.15"];
+packet $heightTransform0623 = [vector3 pos "-0.45 -0.120587 3.15"];
+packet $heightTransform0624 = [vector3 pos "0.45 -0.177374 3.15"];
+packet $heightTransform0625 = [vector3 pos "1.35 0.743209 3.15"];
+packet $heightTransform0626 = [vector3 pos "2.25 0.861751 3.15"];
+packet $heightTransform0627 = [vector3 pos "3.15 -0.234402 3.15"];
+packet $heightTransform0628 = [vector3 pos "4.05 0.105159 3.15"];
+packet $heightTransform0629 = [vector3 pos "4.95 0.318881 3.15"];
+packet $heightTransform0630 = [vector3 pos "5.85 -0.140964 3.15"];
+packet $heightTransform0631 = [vector3 pos "6.75 -0.382381 3.15"];
+packet $heightTransform0632 = [vector3 pos "7.65 -0.552945 3.15"];
+packet $heightTransform0633 = [vector3 pos "8.55 -0.292732 3.15"];
+packet $heightTransform0634 = [vector3 pos "9.45 -0.014585 3.15"];
+packet $heightTransform0635 = [vector3 pos "10.35 0.15162 3.15"];
+packet $heightTransform0636 = [vector3 pos "11.25 0.574012 3.15"];
+packet $heightTransform0637 = [vector3 pos "12.15 0.845588 3.15"];
+packet $heightTransform0638 = [vector3 pos "13.05 0.030877 3.15"];
+packet $heightTransform0639 = [vector3 pos "13.95 0.354372 3.15"];
+packet $heightTransform0640 = [vector3 pos "-13.95 -0.201581 4.05"];
+packet $heightTransform0641 = [vector3 pos "-13.05 0.02961 4.05"];
+packet $heightTransform0642 = [vector3 pos "-12.15 -0.35393 4.05"];
+packet $heightTransform0643 = [vector3 pos "-11.25 -0.468766 4.05"];
+packet $heightTransform0644 = [vector3 pos "-10.35 0.014269 4.05"];
+packet $heightTransform0645 = [vector3 pos "-9.45 -0.072697 4.05"];
+packet $heightTransform0646 = [vector3 pos "-8.55 -0.431195 4.05"];
+packet $heightTransform0647 = [vector3 pos "-7.65 0.4598 4.05"];
+packet $heightTransform0648 = [vector3 pos "-6.75 -0.044878 4.05"];
+packet $heightTransform0649 = [vector3 pos "-5.85 0.438985 4.05"];
+packet $heightTransform0650 = [vector3 pos "-4.95 0.059417 4.05"];
+packet $heightTransform0651 = [vector3 pos "-4.05 0.37467 4.05"];
+packet $heightTransform0652 = [vector3 pos "-3.15 0.185327 4.05"];
+packet $heightTransform0653 = [vector3 pos "-2.25 -0.134167 4.05"];
+packet $heightTransform0654 = [vector3 pos "-1.35 -0.560699 4.05"];
+packet $heightTransform0655 = [vector3 pos "-0.45 0.522565 4.05"];
+packet $heightTransform0656 = [vector3 pos "0.45 -0.482433 4.05"];
+packet $heightTransform0657 = [vector3 pos "1.35 -0.243108 4.05"];
+packet $heightTransform0658 = [vector3 pos "2.25 0.212625 4.05"];
+packet $heightTransform0659 = [vector3 pos "3.15 0.084582 4.05"];
+packet $heightTransform0660 = [vector3 pos "4.05 -0.32031 4.05"];
+packet $heightTransform0661 = [vector3 pos "4.95 -0.281849 4.05"];
+packet $heightTransform0662 = [vector3 pos "5.85 0.09555 4.05"];
+packet $heightTransform0663 = [vector3 pos "6.75 0.409254 4.05"];
+packet $heightTransform0664 = [vector3 pos "7.65 -0.491304 4.05"];
+packet $heightTransform0665 = [vector3 pos "8.55 -0.055169 4.05"];
+packet $heightTransform0666 = [vector3 pos "9.45 -0.060087 4.05"];
+packet $heightTransform0667 = [vector3 pos "10.35 0.29822 4.05"];
+packet $heightTransform0668 = [vector3 pos "11.25 -0.124426 4.05"];
+packet $heightTransform0669 = [vector3 pos "12.15 -0.384604 4.05"];
+packet $heightTransform0670 = [vector3 pos "13.05 0.608005 4.05"];
+packet $heightTransform0671 = [vector3 pos "13.95 0.538523 4.05"];
+packet $heightTransform0672 = [vector3 pos "-13.95 0.434885 4.95"];
+packet $heightTransform0673 = [vector3 pos "-13.05 -0.020989 4.95"];
+packet $heightTransform0674 = [vector3 pos "-12.15 0.100741 4.95"];
+packet $heightTransform0675 = [vector3 pos "-11.25 0.035102 4.95"];
+packet $heightTransform0676 = [vector3 pos "-10.35 -0.56594 4.95"];
+packet $heightTransform0677 = [vector3 pos "-9.45 -0.749965 4.95"];
+packet $heightTransform0678 = [vector3 pos "-8.55 0.157827 4.95"];
+packet $heightTransform0679 = [vector3 pos "-7.65 0.194409 4.95"];
+packet $heightTransform0680 = [vector3 pos "-6.75 0.378294 4.95"];
+packet $heightTransform0681 = [vector3 pos "-5.85 -0.284426 4.95"];
+packet $heightTransform0682 = [vector3 pos "-4.95 0.415947 4.95"];
+packet $heightTransform0683 = [vector3 pos "-4.05 0.398197 4.95"];
+packet $heightTransform0684 = [vector3 pos "-3.15 -0.073566 4.95"];
+packet $heightTransform0685 = [vector3 pos "-2.25 0.35494 4.95"];
+packet $heightTransform0686 = [vector3 pos "-1.35 0.286061 4.95"];
+packet $heightTransform0687 = [vector3 pos "-0.45 0.361271 4.95"];
+packet $heightTransform0688 = [vector3 pos "0.45 -0.227293 4.95"];
+packet $heightTransform0689 = [vector3 pos "1.35 -0.005337 4.95"];
+packet $heightTransform0690 = [vector3 pos "2.25 -0.117042 4.95"];
+packet $heightTransform0691 = [vector3 pos "3.15 -0.021314 4.95"];
+packet $heightTransform0692 = [vector3 pos "4.05 -0.239083 4.95"];
+packet $heightTransform0693 = [vector3 pos "4.95 0.261353 4.95"];
+packet $heightTransform0694 = [vector3 pos "5.85 -0.088077 4.95"];
+packet $heightTransform0695 = [vector3 pos "6.75 -0.23955 4.95"];
+packet $heightTransform0696 = [vector3 pos "7.65 0.757862 4.95"];
+packet $heightTransform0697 = [vector3 pos "8.55 -0.006448 4.95"];
+packet $heightTransform0698 = [vector3 pos "9.45 0.675466 4.95"];
+packet $heightTransform0699 = [vector3 pos "10.35 0.603397 4.95"];
+packet $heightTransform0700 = [vector3 pos "11.25 0.411951 4.95"];
+packet $heightTransform0701 = [vector3 pos "12.15 -0.381936 4.95"];
+packet $heightTransform0702 = [vector3 pos "13.05 -0.257038 4.95"];
+packet $heightTransform0703 = [vector3 pos "13.95 -0.475965 4.95"];
+packet $heightTransform0704 = [vector3 pos "-13.95 0.497626 5.85"];
+packet $heightTransform0705 = [vector3 pos "-13.05 -0.067921 5.85"];
+packet $heightTransform0706 = [vector3 pos "-12.15 0.090063 5.85"];
+packet $heightTransform0707 = [vector3 pos "-11.25 -1.058529 5.85"];
+packet $heightTransform0708 = [vector3 pos "-10.35 -0.452498 5.85"];
+packet $heightTransform0709 = [vector3 pos "-9.45 -0.760323 5.85"];
+packet $heightTransform0710 = [vector3 pos "-8.55 -0.028164 5.85"];
+packet $heightTransform0711 = [vector3 pos "-7.65 -0.529716 5.85"];
+packet $heightTransform0712 = [vector3 pos "-6.75 0.326405 5.85"];
+packet $heightTransform0713 = [vector3 pos "-5.85 1.079511 5.85"];
+packet $heightTransform0714 = [vector3 pos "-4.95 1.001479 5.85"];
+packet $heightTransform0715 = [vector3 pos "-4.05 0.18452 5.85"];
+packet $heightTransform0716 = [vector3 pos "-3.15 0.60142 5.85"];
+packet $heightTransform0717 = [vector3 pos "-2.25 -0.394141 5.85"];
+packet $heightTransform0718 = [vector3 pos "-1.35 0.059059 5.85"];
+packet $heightTransform0719 = [vector3 pos "-0.45 -0.474754 5.85"];
+packet $heightTransform0720 = [vector3 pos "0.45 -0.291141 5.85"];
+packet $heightTransform0721 = [vector3 pos "1.35 -0.582503 5.85"];
+packet $heightTransform0722 = [vector3 pos "2.25 -0.852786 5.85"];
+packet $heightTransform0723 = [vector3 pos "3.15 -0.228581 5.85"];
+packet $heightTransform0724 = [vector3 pos "4.05 -0.124904 5.85"];
+packet $heightTransform0725 = [vector3 pos "4.95 -0.044952 5.85"];
+packet $heightTransform0726 = [vector3 pos "5.85 0.466005 5.85"];
+packet $heightTransform0727 = [vector3 pos "6.75 0.209344 5.85"];
+packet $heightTransform0728 = [vector3 pos "7.65 0.405842 5.85"];
+packet $heightTransform0729 = [vector3 pos "8.55 0.79098 5.85"];
+packet $heightTransform0730 = [vector3 pos "9.45 0.785591 5.85"];
+packet $heightTransform0731 = [vector3 pos "10.35 0.65352 5.85"];
+packet $heightTransform0732 = [vector3 pos "11.25 -0.639357 5.85"];
+packet $heightTransform0733 = [vector3 pos "12.15 -0.129277 5.85"];
+packet $heightTransform0734 = [vector3 pos "13.05 -0.316205 5.85"];
+packet $heightTransform0735 = [vector3 pos "13.95 -0.772298 5.85"];
+packet $heightTransform0736 = [vector3 pos "-13.95 0.023106 6.75"];
+packet $heightTransform0737 = [vector3 pos "-13.05 -0.636437 6.75"];
+packet $heightTransform0738 = [vector3 pos "-12.15 -0.441699 6.75"];
+packet $heightTransform0739 = [vector3 pos "-11.25 -0.689884 6.75"];
+packet $heightTransform0740 = [vector3 pos "-10.35 -0.498503 6.75"];
+packet $heightTransform0741 = [vector3 pos "-9.45 -0.378649 6.75"];
+packet $heightTransform0742 = [vector3 pos "-8.55 -0.471655 6.75"];
+packet $heightTransform0743 = [vector3 pos "-7.65 -0.167925 6.75"];
+packet $heightTransform0744 = [vector3 pos "-6.75 -0.068512 6.75"];
+packet $heightTransform0745 = [vector3 pos "-5.85 0.829359 6.75"];
+packet $heightTransform0746 = [vector3 pos "-4.95 0.369786 6.75"];
+packet $heightTransform0747 = [vector3 pos "-4.05 0.589985 6.75"];
+packet $heightTransform0748 = [vector3 pos "-3.15 0.923323 6.75"];
+packet $heightTransform0749 = [vector3 pos "-2.25 -0.239523 6.75"];
+packet $heightTransform0750 = [vector3 pos "-1.35 -0.245724 6.75"];
+packet $heightTransform0751 = [vector3 pos "-0.45 -0.013751 6.75"];
+packet $heightTransform0752 = [vector3 pos "0.45 -0.550484 6.75"];
+packet $heightTransform0753 = [vector3 pos "1.35 -0.752577 6.75"];
+packet $heightTransform0754 = [vector3 pos "2.25 -0.991076 6.75"];
+packet $heightTransform0755 = [vector3 pos "3.15 -0.602546 6.75"];
+packet $heightTransform0756 = [vector3 pos "4.05 -0.626108 6.75"];
+packet $heightTransform0757 = [vector3 pos "4.95 0.642102 6.75"];
+packet $heightTransform0758 = [vector3 pos "5.85 0.908185 6.75"];
+packet $heightTransform0759 = [vector3 pos "6.75 0.841537 6.75"];
+packet $heightTransform0760 = [vector3 pos "7.65 0.341798 6.75"];
+packet $heightTransform0761 = [vector3 pos "8.55 1.03057 6.75"];
+packet $heightTransform0762 = [vector3 pos "9.45 0.759981 6.75"];
+packet $heightTransform0763 = [vector3 pos "10.35 0.55352 6.75"];
+packet $heightTransform0764 = [vector3 pos "11.25 -0.429276 6.75"];
+packet $heightTransform0765 = [vector3 pos "12.15 -0.356972 6.75"];
+packet $heightTransform0766 = [vector3 pos "13.05 -0.304498 6.75"];
+packet $heightTransform0767 = [vector3 pos "13.95 -0.490633 6.75"];
+packet $heightTransform0768 = [vector3 pos "-13.95 -0.250419 7.65"];
+packet $heightTransform0769 = [vector3 pos "-13.05 -0.391681 7.65"];
+packet $heightTransform0770 = [vector3 pos "-12.15 -0.534895 7.65"];
+packet $heightTransform0771 = [vector3 pos "-11.25 -0.995914 7.65"];
+packet $heightTransform0772 = [vector3 pos "-10.35 -1.059862 7.65"];
+packet $heightTransform0773 = [vector3 pos "-9.45 -1.20132 7.65"];
+packet $heightTransform0774 = [vector3 pos "-8.55 -0.164486 7.65"];
+packet $heightTransform0775 = [vector3 pos "-7.65 -0.498988 7.65"];
+packet $heightTransform0776 = [vector3 pos "-6.75 0.065746 7.65"];
+packet $heightTransform0777 = [vector3 pos "-5.85 1.257531 7.65"];
+packet $heightTransform0778 = [vector3 pos "-4.95 0.944886 7.65"];
+packet $heightTransform0779 = [vector3 pos "-4.05 1.282963 7.65"];
+packet $heightTransform0780 = [vector3 pos "-3.15 0.290228 7.65"];
+packet $heightTransform0781 = [vector3 pos "-2.25 -0.058411 7.65"];
+packet $heightTransform0782 = [vector3 pos "-1.35 -0.262017 7.65"];
+packet $heightTransform0783 = [vector3 pos "-0.45 -0.809663 7.65"];
+packet $heightTransform0784 = [vector3 pos "0.45 -0.983399 7.65"];
+packet $heightTransform0785 = [vector3 pos "1.35 -0.326446 7.65"];
+packet $heightTransform0786 = [vector3 pos "2.25 -0.992845 7.65"];
+packet $heightTransform0787 = [vector3 pos "3.15 -0.498554 7.65"];
+packet $heightTransform0788 = [vector3 pos "4.05 -0.237137 7.65"];
+packet $heightTransform0789 = [vector3 pos "4.95 -0.031872 7.65"];
+packet $heightTransform0790 = [vector3 pos "5.85 0.261895 7.65"];
+packet $heightTransform0791 = [vector3 pos "6.75 0.971106 7.65"];
+packet $heightTransform0792 = [vector3 pos "7.65 0.80945 7.65"];
+packet $heightTransform0793 = [vector3 pos "8.55 0.305986 7.65"];
+packet $heightTransform0794 = [vector3 pos "9.45 0.501717 7.65"];
+packet $heightTransform0795 = [vector3 pos "10.35 0.66914 7.65"];
+packet $heightTransform0796 = [vector3 pos "11.25 0.227979 7.65"];
+packet $heightTransform0797 = [vector3 pos "12.15 -0.653704 7.65"];
+packet $heightTransform0798 = [vector3 pos "13.05 -0.318963 7.65"];
+packet $heightTransform0799 = [vector3 pos "13.95 -1.002415 7.65"];
+packet $heightTransform0800 = [vector3 pos "-13.95 0.271207 8.55"];
+packet $heightTransform0801 = [vector3 pos "-13.05 -0.544042 8.55"];
+packet $heightTransform0802 = [vector3 pos "-12.15 -1.178266 8.55"];
+packet $heightTransform0803 = [vector3 pos "-11.25 -1.05993 8.55"];
+packet $heightTransform0804 = [vector3 pos "-10.35 -0.902668 8.55"];
+packet $heightTransform0805 = [vector3 pos "-9.45 -0.06131 8.55"];
+packet $heightTransform0806 = [vector3 pos "-8.55 -0.249562 8.55"];
+packet $heightTransform0807 = [vector3 pos "-7.65 0.179774 8.55"];
+packet $heightTransform0808 = [vector3 pos "-6.75 0.90281 8.55"];
+packet $heightTransform0809 = [vector3 pos "-5.85 0.451404 8.55"];
+packet $heightTransform0810 = [vector3 pos "-4.95 0.571065 8.55"];
+packet $heightTransform0811 = [vector3 pos "-4.05 0.433348 8.55"];
+packet $heightTransform0812 = [vector3 pos "-3.15 0.410722 8.55"];
+packet $heightTransform0813 = [vector3 pos "-2.25 0.786334 8.55"];
+packet $heightTransform0814 = [vector3 pos "-1.35 -0.280784 8.55"];
+packet $heightTransform0815 = [vector3 pos "-0.45 -0.05268 8.55"];
+packet $heightTransform0816 = [vector3 pos "0.45 -0.886365 8.55"];
+packet $heightTransform0817 = [vector3 pos "1.35 -0.842958 8.55"];
+packet $heightTransform0818 = [vector3 pos "2.25 -0.728343 8.55"];
+packet $heightTransform0819 = [vector3 pos "3.15 -0.710394 8.55"];
+packet $heightTransform0820 = [vector3 pos "4.05 -0.387105 8.55"];
+packet $heightTransform0821 = [vector3 pos "4.95 0.007756 8.55"];
+packet $heightTransform0822 = [vector3 pos "5.85 0.315035 8.55"];
+packet $heightTransform0823 = [vector3 pos "6.75 1.350999 8.55"];
+packet $heightTransform0824 = [vector3 pos "7.65 0.592411 8.55"];
+packet $heightTransform0825 = [vector3 pos "8.55 0.196812 8.55"];
+packet $heightTransform0826 = [vector3 pos "9.45 1.039691 8.55"];
+packet $heightTransform0827 = [vector3 pos "10.35 -0.169446 8.55"];
+packet $heightTransform0828 = [vector3 pos "11.25 -0.204593 8.55"];
+packet $heightTransform0829 = [vector3 pos "12.15 -0.38408 8.55"];
+packet $heightTransform0830 = [vector3 pos "13.05 -1.299197 8.55"];
+packet $heightTransform0831 = [vector3 pos "13.95 -0.635014 8.55"];
+packet $heightTransform0832 = [vector3 pos "-13.95 0.553988 9.45"];
+packet $heightTransform0833 = [vector3 pos "-13.05 -0.718132 9.45"];
+packet $heightTransform0834 = [vector3 pos "-12.15 -0.953213 9.45"];
+packet $heightTransform0835 = [vector3 pos "-11.25 -0.25226 9.45"];
+packet $heightTransform0836 = [vector3 pos "-10.35 -1.061775 9.45"];
+packet $heightTransform0837 = [vector3 pos "-9.45 -0.985844 9.45"];
+packet $heightTransform0838 = [vector3 pos "-8.55 0.117375 9.45"];
+packet $heightTransform0839 = [vector3 pos "-7.65 -0.134079 9.45"];
+packet $heightTransform0840 = [vector3 pos "-6.75 0.271522 9.45"];
+packet $heightTransform0841 = [vector3 pos "-5.85 0.863172 9.45"];
+packet $heightTransform0842 = [vector3 pos "-4.95 0.859161 9.45"];
+packet $heightTransform0843 = [vector3 pos "-4.05 0.287343 9.45"];
+packet $heightTransform0844 = [vector3 pos "-3.15 -0.075153 9.45"];
+packet $heightTransform0845 = [vector3 pos "-2.25 -0.322072 9.45"];
+packet $heightTransform0846 = [vector3 pos "-1.35 -0.357903 9.45"];
+packet $heightTransform0847 = [vector3 pos "-0.45 -0.432513 9.45"];
+packet $heightTransform0848 = [vector3 pos "0.45 -0.350898 9.45"];
+packet $heightTransform0849 = [vector3 pos "1.35 -0.549794 9.45"];
+packet $heightTransform0850 = [vector3 pos "2.25 -0.525074 9.45"];
+packet $heightTransform0851 = [vector3 pos "3.15 -0.514068 9.45"];
+packet $heightTransform0852 = [vector3 pos "4.05 0.354144 9.45"];
+packet $heightTransform0853 = [vector3 pos "4.95 0.277918 9.45"];
+packet $heightTransform0854 = [vector3 pos "5.85 -0.058822 9.45"];
+packet $heightTransform0855 = [vector3 pos "6.75 0.50383 9.45"];
+packet $heightTransform0856 = [vector3 pos "7.65 0.164594 9.45"];
+packet $heightTransform0857 = [vector3 pos "8.55 0.104303 9.45"];
+packet $heightTransform0858 = [vector3 pos "9.45 -0.155801 9.45"];
+packet $heightTransform0859 = [vector3 pos "10.35 -0.011672 9.45"];
+packet $heightTransform0860 = [vector3 pos "11.25 -0.768653 9.45"];
+packet $heightTransform0861 = [vector3 pos "12.15 -0.692902 9.45"];
+packet $heightTransform0862 = [vector3 pos "13.05 -1.166735 9.45"];
+packet $heightTransform0863 = [vector3 pos "13.95 -1.000643 9.45"];
+packet $heightTransform0864 = [vector3 pos "-13.95 -0.351093 10.35"];
+packet $heightTransform0865 = [vector3 pos "-13.05 -0.087132 10.35"];
+packet $heightTransform0866 = [vector3 pos "-12.15 -0.663911 10.35"];
+packet $heightTransform0867 = [vector3 pos "-11.25 -0.738992 10.35"];
+packet $heightTransform0868 = [vector3 pos "-10.35 -0.025137 10.35"];
+packet $heightTransform0869 = [vector3 pos "-9.45 -0.283756 10.35"];
+packet $heightTransform0870 = [vector3 pos "-8.55 0.116955 10.35"];
+packet $heightTransform0871 = [vector3 pos "-7.65 -0.204677 10.35"];
+packet $heightTransform0872 = [vector3 pos "-6.75 0.426149 10.35"];
+packet $heightTransform0873 = [vector3 pos "-5.85 -0.004808 10.35"];
+packet $heightTransform0874 = [vector3 pos "-4.95 0.88739 10.35"];
+packet $heightTransform0875 = [vector3 pos "-4.05 0.470839 10.35"];
+packet $heightTransform0876 = [vector3 pos "-3.15 0.484288 10.35"];
+packet $heightTransform0877 = [vector3 pos "-2.25 -0.339143 10.35"];
+packet $heightTransform0878 = [vector3 pos "-1.35 0.472474 10.35"];
+packet $heightTransform0879 = [vector3 pos "-0.45 -0.548354 10.35"];
+packet $heightTransform0880 = [vector3 pos "0.45 -0.073741 10.35"];
+packet $heightTransform0881 = [vector3 pos "1.35 -0.390642 10.35"];
+packet $heightTransform0882 = [vector3 pos "2.25 -0.329085 10.35"];
+packet $heightTransform0883 = [vector3 pos "3.15 0.253689 10.35"];
+packet $heightTransform0884 = [vector3 pos "4.05 -0.551887 10.35"];
+packet $heightTransform0885 = [vector3 pos "4.95 0.264087 10.35"];
+packet $heightTransform0886 = [vector3 pos "5.85 0.544607 10.35"];
+packet $heightTransform0887 = [vector3 pos "6.75 0.224075 10.35"];
+packet $heightTransform0888 = [vector3 pos "7.65 -0.098797 10.35"];
+packet $heightTransform0889 = [vector3 pos "8.55 0.638872 10.35"];
+packet $heightTransform0890 = [vector3 pos "9.45 0.57931 10.35"];
+packet $heightTransform0891 = [vector3 pos "10.35 -0.437339 10.35"];
+packet $heightTransform0892 = [vector3 pos "11.25 -0.640811 10.35"];
+packet $heightTransform0893 = [vector3 pos "12.15 -0.381147 10.35"];
+packet $heightTransform0894 = [vector3 pos "13.05 -0.589558 10.35"];
+packet $heightTransform0895 = [vector3 pos "13.95 -0.839735 10.35"];
+packet $heightTransform0896 = [vector3 pos "-13.95 0.237555 11.25"];
+packet $heightTransform0897 = [vector3 pos "-13.05 -0.099864 11.25"];
+packet $heightTransform0898 = [vector3 pos "-12.15 0.525559 11.25"];
+packet $heightTransform0899 = [vector3 pos "-11.25 -0.123769 11.25"];
+packet $heightTransform0900 = [vector3 pos "-10.35 0.332019 11.25"];
+packet $heightTransform0901 = [vector3 pos "-9.45 -0.540182 11.25"];
+packet $heightTransform0902 = [vector3 pos "-8.55 0.150851 11.25"];
+packet $heightTransform0903 = [vector3 pos "-7.65 -0.34489 11.25"];
+packet $heightTransform0904 = [vector3 pos "-6.75 0.47669 11.25"];
+packet $heightTransform0905 = [vector3 pos "-5.85 -0.192906 11.25"];
+packet $heightTransform0906 = [vector3 pos "-4.95 0.344241 11.25"];
+packet $heightTransform0907 = [vector3 pos "-4.05 0.333925 11.25"];
+packet $heightTransform0908 = [vector3 pos "-3.15 0.260639 11.25"];
+packet $heightTransform0909 = [vector3 pos "-2.25 0.015275 11.25"];
+packet $heightTransform0910 = [vector3 pos "-1.35 0.246593 11.25"];
+packet $heightTransform0911 = [vector3 pos "-0.45 0.48628 11.25"];
+packet $heightTransform0912 = [vector3 pos "0.45 -0.505928 11.25"];
+packet $heightTransform0913 = [vector3 pos "1.35 0.283713 11.25"];
+packet $heightTransform0914 = [vector3 pos "2.25 0.125354 11.25"];
+packet $heightTransform0915 = [vector3 pos "3.15 -0.03518 11.25"];
+packet $heightTransform0916 = [vector3 pos "4.05 0.307867 11.25"];
+packet $heightTransform0917 = [vector3 pos "4.95 -0.438948 11.25"];
+packet $heightTransform0918 = [vector3 pos "5.85 -0.400952 11.25"];
+packet $heightTransform0919 = [vector3 pos "6.75 0.121154 11.25"];
+packet $heightTransform0920 = [vector3 pos "7.65 0.454332 11.25"];
+packet $heightTransform0921 = [vector3 pos "8.55 0.442612 11.25"];
+packet $heightTransform0922 = [vector3 pos "9.45 -0.381115 11.25"];
+packet $heightTransform0923 = [vector3 pos "10.35 -0.490888 11.25"];
+packet $heightTransform0924 = [vector3 pos "11.25 0.227525 11.25"];
+packet $heightTransform0925 = [vector3 pos "12.15 0.136208 11.25"];
+packet $heightTransform0926 = [vector3 pos "13.05 -0.364291 11.25"];
+packet $heightTransform0927 = [vector3 pos "13.95 -0.329644 11.25"];
+packet $heightTransform0928 = [vector3 pos "-13.95 0.443815 12.15"];
+packet $heightTransform0929 = [vector3 pos "-13.05 0.468203 12.15"];
+packet $heightTransform0930 = [vector3 pos "-12.15 0.654858 12.15"];
+packet $heightTransform0931 = [vector3 pos "-11.25 -0.032008 12.15"];
+packet $heightTransform0932 = [vector3 pos "-10.35 -0.191079 12.15"];
+packet $heightTransform0933 = [vector3 pos "-9.45 0.220187 12.15"];
+packet $heightTransform0934 = [vector3 pos "-8.55 -0.028509 12.15"];
+packet $heightTransform0935 = [vector3 pos "-7.65 0.169707 12.15"];
+packet $heightTransform0936 = [vector3 pos "-6.75 0.274285 12.15"];
+packet $heightTransform0937 = [vector3 pos "-5.85 -0.424922 12.15"];
+packet $heightTransform0938 = [vector3 pos "-4.95 -0.789187 12.15"];
+packet $heightTransform0939 = [vector3 pos "-4.05 0.106502 12.15"];
+packet $heightTransform0940 = [vector3 pos "-3.15 0.280805 12.15"];
+packet $heightTransform0941 = [vector3 pos "-2.25 -0.647345 12.15"];
+packet $heightTransform0942 = [vector3 pos "-1.35 0.264223 12.15"];
+packet $heightTransform0943 = [vector3 pos "-0.45 0.243577 12.15"];
+packet $heightTransform0944 = [vector3 pos "0.45 -0.306985 12.15"];
+packet $heightTransform0945 = [vector3 pos "1.35 0.681647 12.15"];
+packet $heightTransform0946 = [vector3 pos "2.25 0.783296 12.15"];
+packet $heightTransform0947 = [vector3 pos "3.15 -0.111732 12.15"];
+packet $heightTransform0948 = [vector3 pos "4.05 0.35598 12.15"];
+packet $heightTransform0949 = [vector3 pos "4.95 0.299065 12.15"];
+packet $heightTransform0950 = [vector3 pos "5.85 -0.360043 12.15"];
+packet $heightTransform0951 = [vector3 pos "6.75 -0.142312 12.15"];
+packet $heightTransform0952 = [vector3 pos "7.65 -0.483287 12.15"];
+packet $heightTransform0953 = [vector3 pos "8.55 -0.30304 12.15"];
+packet $heightTransform0954 = [vector3 pos "9.45 -0.022122 12.15"];
+packet $heightTransform0955 = [vector3 pos "10.35 -0.606196 12.15"];
+packet $heightTransform0956 = [vector3 pos "11.25 0.596203 12.15"];
+packet $heightTransform0957 = [vector3 pos "12.15 0.291443 12.15"];
+packet $heightTransform0958 = [vector3 pos "13.05 0.24397 12.15"];
+packet $heightTransform0959 = [vector3 pos "13.95 -0.045596 12.15"];
+packet $heightTransform0960 = [vector3 pos "-13.95 -0.529862 13.05"];
+packet $heightTransform0961 = [vector3 pos "-13.05 0.217671 13.05"];
+packet $heightTransform0962 = [vector3 pos "-12.15 0.869927 13.05"];
+packet $heightTransform0963 = [vector3 pos "-11.25 1.021296 13.05"];
+packet $heightTransform0964 = [vector3 pos "-10.35 0.703425 13.05"];
+packet $heightTransform0965 = [vector3 pos "-9.45 0.41713 13.05"];
+packet $heightTransform0966 = [vector3 pos "-8.55 0.622031 13.05"];
+packet $heightTransform0967 = [vector3 pos "-7.65 0.075623 13.05"];
+packet $heightTransform0968 = [vector3 pos "-6.75 -0.395072 13.05"];
+packet $heightTransform0969 = [vector3 pos "-5.85 0.085786 13.05"];
+packet $heightTransform0970 = [vector3 pos "-4.95 -0.408371 13.05"];
+packet $heightTransform0971 = [vector3 pos "-4.05 -0.614021 13.05"];
+packet $heightTransform0972 = [vector3 pos "-3.15 -0.925057 13.05"];
+packet $heightTransform0973 = [vector3 pos "-2.25 -0.406689 13.05"];
+packet $heightTransform0974 = [vector3 pos "-1.35 0.256806 13.05"];
+packet $heightTransform0975 = [vector3 pos "-0.45 0.707825 13.05"];
+packet $heightTransform0976 = [vector3 pos "0.45 0.09553 13.05"];
+packet $heightTransform0977 = [vector3 pos "1.35 0.660088 13.05"];
+packet $heightTransform0978 = [vector3 pos "2.25 0.001997 13.05"];
+packet $heightTransform0979 = [vector3 pos "3.15 0.79367 13.05"];
+packet $heightTransform0980 = [vector3 pos "4.05 0.363766 13.05"];
+packet $heightTransform0981 = [vector3 pos "4.95 0.431784 13.05"];
+packet $heightTransform0982 = [vector3 pos "5.85 -0.349484 13.05"];
+packet $heightTransform0983 = [vector3 pos "6.75 -1.033349 13.05"];
+packet $heightTransform0984 = [vector3 pos "7.65 -0.63588 13.05"];
+packet $heightTransform0985 = [vector3 pos "8.55 -0.769178 13.05"];
+packet $heightTransform0986 = [vector3 pos "9.45 0.147766 13.05"];
+packet $heightTransform0987 = [vector3 pos "10.35 0.094961 13.05"];
+packet $heightTransform0988 = [vector3 pos "11.25 0.635935 13.05"];
+packet $heightTransform0989 = [vector3 pos "12.15 0.260686 13.05"];
+packet $heightTransform0990 = [vector3 pos "13.05 0.811198 13.05"];
+packet $heightTransform0991 = [vector3 pos "13.95 0.318502 13.05"];
+packet $heightTransform0992 = [vector3 pos "-13.95 0.407758 13.95"];
+packet $heightTransform0993 = [vector3 pos "-13.05 0.744312 13.95"];
+packet $heightTransform0994 = [vector3 pos "-12.15 0.954381 13.95"];
+packet $heightTransform0995 = [vector3 pos "-11.25 0.719567 13.95"];
+packet $heightTransform0996 = [vector3 pos "-10.35 0.380529 13.95"];
+packet $heightTransform0997 = [vector3 pos "-9.45 0.948131 13.95"];
+packet $heightTransform0998 = [vector3 pos "-8.55 0.818836 13.95"];
+packet $heightTransform0999 = [vector3 pos "-7.65 -0.017204 13.95"];
+packet $heightTransform1000 = [vector3 pos "-6.75 0.168369 13.95"];
+packet $heightTransform1001 = [vector3 pos "-5.85 -0.843762 13.95"];
+packet $heightTransform1002 = [vector3 pos "-4.95 -0.406326 13.95"];
+packet $heightTransform1003 = [vector3 pos "-4.05 -0.453745 13.95"];
+packet $heightTransform1004 = [vector3 pos "-3.15 -0.939695 13.95"];
+packet $heightTransform1005 = [vector3 pos "-2.25 0.225506 13.95"];
+packet $heightTransform1006 = [vector3 pos "-1.35 0.179432 13.95"];
+packet $heightTransform1007 = [vector3 pos "-0.45 -0.089907 13.95"];
+packet $heightTransform1008 = [vector3 pos "0.45 1.059038 13.95"];
+packet $heightTransform1009 = [vector3 pos "1.35 1.145151 13.95"];
+packet $heightTransform1010 = [vector3 pos "2.25 1.160341 13.95"];
+packet $heightTransform1011 = [vector3 pos "3.15 0.358617 13.95"];
+packet $heightTransform1012 = [vector3 pos "4.05 0.223967 13.95"];
+packet $heightTransform1013 = [vector3 pos "4.95 -0.050127 13.95"];
+packet $heightTransform1014 = [vector3 pos "5.85 -0.488015 13.95"];
+packet $heightTransform1015 = [vector3 pos "6.75 -1.249205 13.95"];
+packet $heightTransform1016 = [vector3 pos "7.65 -0.283944 13.95"];
+packet $heightTransform1017 = [vector3 pos "8.55 -0.373844 13.95"];
+packet $heightTransform1018 = [vector3 pos "9.45 -0.533142 13.95"];
+packet $heightTransform1019 = [vector3 pos "10.35 -0.296137 13.95"];
+packet $heightTransform1020 = [vector3 pos "11.25 0.329336 13.95"];
+packet $heightTransform1021 = [vector3 pos "12.15 0.203865 13.95"];
+packet $heightTransform1022 = [vector3 pos "13.05 0.999919 13.95"];
+packet $heightTransform1023 = [vector3 pos "13.95 0.264125 13.95"];
+
+actor(transformed-instance) @heightInstances =
+    [actor source @heightSource]
+    [struct-array transforms {
+        $heightTransform0000 $heightTransform0001 $heightTransform0002 $heightTransform0003
+        $heightTransform0004 $heightTransform0005 $heightTransform0006 $heightTransform0007
+        $heightTransform0008 $heightTransform0009 $heightTransform0010 $heightTransform0011
+        $heightTransform0012 $heightTransform0013 $heightTransform0014 $heightTransform0015
+        $heightTransform0016 $heightTransform0017 $heightTransform0018 $heightTransform0019
+        $heightTransform0020 $heightTransform0021 $heightTransform0022 $heightTransform0023
+        $heightTransform0024 $heightTransform0025 $heightTransform0026 $heightTransform0027
+        $heightTransform0028 $heightTransform0029 $heightTransform0030 $heightTransform0031
+        $heightTransform0032 $heightTransform0033 $heightTransform0034 $heightTransform0035
+        $heightTransform0036 $heightTransform0037 $heightTransform0038 $heightTransform0039
+        $heightTransform0040 $heightTransform0041 $heightTransform0042 $heightTransform0043
+        $heightTransform0044 $heightTransform0045 $heightTransform0046 $heightTransform0047
+        $heightTransform0048 $heightTransform0049 $heightTransform0050 $heightTransform0051
+        $heightTransform0052 $heightTransform0053 $heightTransform0054 $heightTransform0055
+        $heightTransform0056 $heightTransform0057 $heightTransform0058 $heightTransform0059
+        $heightTransform0060 $heightTransform0061 $heightTransform0062 $heightTransform0063
+        $heightTransform0064 $heightTransform0065 $heightTransform0066 $heightTransform0067
+        $heightTransform0068 $heightTransform0069 $heightTransform0070 $heightTransform0071
+        $heightTransform0072 $heightTransform0073 $heightTransform0074 $heightTransform0075
+        $heightTransform0076 $heightTransform0077 $heightTransform0078 $heightTransform0079
+        $heightTransform0080 $heightTransform0081 $heightTransform0082 $heightTransform0083
+        $heightTransform0084 $heightTransform0085 $heightTransform0086 $heightTransform0087
+        $heightTransform0088 $heightTransform0089 $heightTransform0090 $heightTransform0091
+        $heightTransform0092 $heightTransform0093 $heightTransform0094 $heightTransform0095
+        $heightTransform0096 $heightTransform0097 $heightTransform0098 $heightTransform0099
+        $heightTransform0100 $heightTransform0101 $heightTransform0102 $heightTransform0103
+        $heightTransform0104 $heightTransform0105 $heightTransform0106 $heightTransform0107
+        $heightTransform0108 $heightTransform0109 $heightTransform0110 $heightTransform0111
+        $heightTransform0112 $heightTransform0113 $heightTransform0114 $heightTransform0115
+        $heightTransform0116 $heightTransform0117 $heightTransform0118 $heightTransform0119
+        $heightTransform0120 $heightTransform0121 $heightTransform0122 $heightTransform0123
+        $heightTransform0124 $heightTransform0125 $heightTransform0126 $heightTransform0127
+        $heightTransform0128 $heightTransform0129 $heightTransform0130 $heightTransform0131
+        $heightTransform0132 $heightTransform0133 $heightTransform0134 $heightTransform0135
+        $heightTransform0136 $heightTransform0137 $heightTransform0138 $heightTransform0139
+        $heightTransform0140 $heightTransform0141 $heightTransform0142 $heightTransform0143
+        $heightTransform0144 $heightTransform0145 $heightTransform0146 $heightTransform0147
+        $heightTransform0148 $heightTransform0149 $heightTransform0150 $heightTransform0151
+        $heightTransform0152 $heightTransform0153 $heightTransform0154 $heightTransform0155
+        $heightTransform0156 $heightTransform0157 $heightTransform0158 $heightTransform0159
+        $heightTransform0160 $heightTransform0161 $heightTransform0162 $heightTransform0163
+        $heightTransform0164 $heightTransform0165 $heightTransform0166 $heightTransform0167
+        $heightTransform0168 $heightTransform0169 $heightTransform0170 $heightTransform0171
+        $heightTransform0172 $heightTransform0173 $heightTransform0174 $heightTransform0175
+        $heightTransform0176 $heightTransform0177 $heightTransform0178 $heightTransform0179
+        $heightTransform0180 $heightTransform0181 $heightTransform0182 $heightTransform0183
+        $heightTransform0184 $heightTransform0185 $heightTransform0186 $heightTransform0187
+        $heightTransform0188 $heightTransform0189 $heightTransform0190 $heightTransform0191
+        $heightTransform0192 $heightTransform0193 $heightTransform0194 $heightTransform0195
+        $heightTransform0196 $heightTransform0197 $heightTransform0198 $heightTransform0199
+        $heightTransform0200 $heightTransform0201 $heightTransform0202 $heightTransform0203
+        $heightTransform0204 $heightTransform0205 $heightTransform0206 $heightTransform0207
+        $heightTransform0208 $heightTransform0209 $heightTransform0210 $heightTransform0211
+        $heightTransform0212 $heightTransform0213 $heightTransform0214 $heightTransform0215
+        $heightTransform0216 $heightTransform0217 $heightTransform0218 $heightTransform0219
+        $heightTransform0220 $heightTransform0221 $heightTransform0222 $heightTransform0223
+        $heightTransform0224 $heightTransform0225 $heightTransform0226 $heightTransform0227
+        $heightTransform0228 $heightTransform0229 $heightTransform0230 $heightTransform0231
+        $heightTransform0232 $heightTransform0233 $heightTransform0234 $heightTransform0235
+        $heightTransform0236 $heightTransform0237 $heightTransform0238 $heightTransform0239
+        $heightTransform0240 $heightTransform0241 $heightTransform0242 $heightTransform0243
+        $heightTransform0244 $heightTransform0245 $heightTransform0246 $heightTransform0247
+        $heightTransform0248 $heightTransform0249 $heightTransform0250 $heightTransform0251
+        $heightTransform0252 $heightTransform0253 $heightTransform0254 $heightTransform0255
+        $heightTransform0256 $heightTransform0257 $heightTransform0258 $heightTransform0259
+        $heightTransform0260 $heightTransform0261 $heightTransform0262 $heightTransform0263
+        $heightTransform0264 $heightTransform0265 $heightTransform0266 $heightTransform0267
+        $heightTransform0268 $heightTransform0269 $heightTransform0270 $heightTransform0271
+        $heightTransform0272 $heightTransform0273 $heightTransform0274 $heightTransform0275
+        $heightTransform0276 $heightTransform0277 $heightTransform0278 $heightTransform0279
+        $heightTransform0280 $heightTransform0281 $heightTransform0282 $heightTransform0283
+        $heightTransform0284 $heightTransform0285 $heightTransform0286 $heightTransform0287
+        $heightTransform0288 $heightTransform0289 $heightTransform0290 $heightTransform0291
+        $heightTransform0292 $heightTransform0293 $heightTransform0294 $heightTransform0295
+        $heightTransform0296 $heightTransform0297 $heightTransform0298 $heightTransform0299
+        $heightTransform0300 $heightTransform0301 $heightTransform0302 $heightTransform0303
+        $heightTransform0304 $heightTransform0305 $heightTransform0306 $heightTransform0307
+        $heightTransform0308 $heightTransform0309 $heightTransform0310 $heightTransform0311
+        $heightTransform0312 $heightTransform0313 $heightTransform0314 $heightTransform0315
+        $heightTransform0316 $heightTransform0317 $heightTransform0318 $heightTransform0319
+        $heightTransform0320 $heightTransform0321 $heightTransform0322 $heightTransform0323
+        $heightTransform0324 $heightTransform0325 $heightTransform0326 $heightTransform0327
+        $heightTransform0328 $heightTransform0329 $heightTransform0330 $heightTransform0331
+        $heightTransform0332 $heightTransform0333 $heightTransform0334 $heightTransform0335
+        $heightTransform0336 $heightTransform0337 $heightTransform0338 $heightTransform0339
+        $heightTransform0340 $heightTransform0341 $heightTransform0342 $heightTransform0343
+        $heightTransform0344 $heightTransform0345 $heightTransform0346 $heightTransform0347
+        $heightTransform0348 $heightTransform0349 $heightTransform0350 $heightTransform0351
+        $heightTransform0352 $heightTransform0353 $heightTransform0354 $heightTransform0355
+        $heightTransform0356 $heightTransform0357 $heightTransform0358 $heightTransform0359
+        $heightTransform0360 $heightTransform0361 $heightTransform0362 $heightTransform0363
+        $heightTransform0364 $heightTransform0365 $heightTransform0366 $heightTransform0367
+        $heightTransform0368 $heightTransform0369 $heightTransform0370 $heightTransform0371
+        $heightTransform0372 $heightTransform0373 $heightTransform0374 $heightTransform0375
+        $heightTransform0376 $heightTransform0377 $heightTransform0378 $heightTransform0379
+        $heightTransform0380 $heightTransform0381 $heightTransform0382 $heightTransform0383
+        $heightTransform0384 $heightTransform0385 $heightTransform0386 $heightTransform0387
+        $heightTransform0388 $heightTransform0389 $heightTransform0390 $heightTransform0391
+        $heightTransform0392 $heightTransform0393 $heightTransform0394 $heightTransform0395
+        $heightTransform0396 $heightTransform0397 $heightTransform0398 $heightTransform0399
+        $heightTransform0400 $heightTransform0401 $heightTransform0402 $heightTransform0403
+        $heightTransform0404 $heightTransform0405 $heightTransform0406 $heightTransform0407
+        $heightTransform0408 $heightTransform0409 $heightTransform0410 $heightTransform0411
+        $heightTransform0412 $heightTransform0413 $heightTransform0414 $heightTransform0415
+        $heightTransform0416 $heightTransform0417 $heightTransform0418 $heightTransform0419
+        $heightTransform0420 $heightTransform0421 $heightTransform0422 $heightTransform0423
+        $heightTransform0424 $heightTransform0425 $heightTransform0426 $heightTransform0427
+        $heightTransform0428 $heightTransform0429 $heightTransform0430 $heightTransform0431
+        $heightTransform0432 $heightTransform0433 $heightTransform0434 $heightTransform0435
+        $heightTransform0436 $heightTransform0437 $heightTransform0438 $heightTransform0439
+        $heightTransform0440 $heightTransform0441 $heightTransform0442 $heightTransform0443
+        $heightTransform0444 $heightTransform0445 $heightTransform0446 $heightTransform0447
+        $heightTransform0448 $heightTransform0449 $heightTransform0450 $heightTransform0451
+        $heightTransform0452 $heightTransform0453 $heightTransform0454 $heightTransform0455
+        $heightTransform0456 $heightTransform0457 $heightTransform0458 $heightTransform0459
+        $heightTransform0460 $heightTransform0461 $heightTransform0462 $heightTransform0463
+        $heightTransform0464 $heightTransform0465 $heightTransform0466 $heightTransform0467
+        $heightTransform0468 $heightTransform0469 $heightTransform0470 $heightTransform0471
+        $heightTransform0472 $heightTransform0473 $heightTransform0474 $heightTransform0475
+        $heightTransform0476 $heightTransform0477 $heightTransform0478 $heightTransform0479
+        $heightTransform0480 $heightTransform0481 $heightTransform0482 $heightTransform0483
+        $heightTransform0484 $heightTransform0485 $heightTransform0486 $heightTransform0487
+        $heightTransform0488 $heightTransform0489 $heightTransform0490 $heightTransform0491
+        $heightTransform0492 $heightTransform0493 $heightTransform0494 $heightTransform0495
+        $heightTransform0496 $heightTransform0497 $heightTransform0498 $heightTransform0499
+        $heightTransform0500 $heightTransform0501 $heightTransform0502 $heightTransform0503
+        $heightTransform0504 $heightTransform0505 $heightTransform0506 $heightTransform0507
+        $heightTransform0508 $heightTransform0509 $heightTransform0510 $heightTransform0511
+        $heightTransform0512 $heightTransform0513 $heightTransform0514 $heightTransform0515
+        $heightTransform0516 $heightTransform0517 $heightTransform0518 $heightTransform0519
+        $heightTransform0520 $heightTransform0521 $heightTransform0522 $heightTransform0523
+        $heightTransform0524 $heightTransform0525 $heightTransform0526 $heightTransform0527
+        $heightTransform0528 $heightTransform0529 $heightTransform0530 $heightTransform0531
+        $heightTransform0532 $heightTransform0533 $heightTransform0534 $heightTransform0535
+        $heightTransform0536 $heightTransform0537 $heightTransform0538 $heightTransform0539
+        $heightTransform0540 $heightTransform0541 $heightTransform0542 $heightTransform0543
+        $heightTransform0544 $heightTransform0545 $heightTransform0546 $heightTransform0547
+        $heightTransform0548 $heightTransform0549 $heightTransform0550 $heightTransform0551
+        $heightTransform0552 $heightTransform0553 $heightTransform0554 $heightTransform0555
+        $heightTransform0556 $heightTransform0557 $heightTransform0558 $heightTransform0559
+        $heightTransform0560 $heightTransform0561 $heightTransform0562 $heightTransform0563
+        $heightTransform0564 $heightTransform0565 $heightTransform0566 $heightTransform0567
+        $heightTransform0568 $heightTransform0569 $heightTransform0570 $heightTransform0571
+        $heightTransform0572 $heightTransform0573 $heightTransform0574 $heightTransform0575
+        $heightTransform0576 $heightTransform0577 $heightTransform0578 $heightTransform0579
+        $heightTransform0580 $heightTransform0581 $heightTransform0582 $heightTransform0583
+        $heightTransform0584 $heightTransform0585 $heightTransform0586 $heightTransform0587
+        $heightTransform0588 $heightTransform0589 $heightTransform0590 $heightTransform0591
+        $heightTransform0592 $heightTransform0593 $heightTransform0594 $heightTransform0595
+        $heightTransform0596 $heightTransform0597 $heightTransform0598 $heightTransform0599
+        $heightTransform0600 $heightTransform0601 $heightTransform0602 $heightTransform0603
+        $heightTransform0604 $heightTransform0605 $heightTransform0606 $heightTransform0607
+        $heightTransform0608 $heightTransform0609 $heightTransform0610 $heightTransform0611
+        $heightTransform0612 $heightTransform0613 $heightTransform0614 $heightTransform0615
+        $heightTransform0616 $heightTransform0617 $heightTransform0618 $heightTransform0619
+        $heightTransform0620 $heightTransform0621 $heightTransform0622 $heightTransform0623
+        $heightTransform0624 $heightTransform0625 $heightTransform0626 $heightTransform0627
+        $heightTransform0628 $heightTransform0629 $heightTransform0630 $heightTransform0631
+        $heightTransform0632 $heightTransform0633 $heightTransform0634 $heightTransform0635
+        $heightTransform0636 $heightTransform0637 $heightTransform0638 $heightTransform0639
+        $heightTransform0640 $heightTransform0641 $heightTransform0642 $heightTransform0643
+        $heightTransform0644 $heightTransform0645 $heightTransform0646 $heightTransform0647
+        $heightTransform0648 $heightTransform0649 $heightTransform0650 $heightTransform0651
+        $heightTransform0652 $heightTransform0653 $heightTransform0654 $heightTransform0655
+        $heightTransform0656 $heightTransform0657 $heightTransform0658 $heightTransform0659
+        $heightTransform0660 $heightTransform0661 $heightTransform0662 $heightTransform0663
+        $heightTransform0664 $heightTransform0665 $heightTransform0666 $heightTransform0667
+        $heightTransform0668 $heightTransform0669 $heightTransform0670 $heightTransform0671
+        $heightTransform0672 $heightTransform0673 $heightTransform0674 $heightTransform0675
+        $heightTransform0676 $heightTransform0677 $heightTransform0678 $heightTransform0679
+        $heightTransform0680 $heightTransform0681 $heightTransform0682 $heightTransform0683
+        $heightTransform0684 $heightTransform0685 $heightTransform0686 $heightTransform0687
+        $heightTransform0688 $heightTransform0689 $heightTransform0690 $heightTransform0691
+        $heightTransform0692 $heightTransform0693 $heightTransform0694 $heightTransform0695
+        $heightTransform0696 $heightTransform0697 $heightTransform0698 $heightTransform0699
+        $heightTransform0700 $heightTransform0701 $heightTransform0702 $heightTransform0703
+        $heightTransform0704 $heightTransform0705 $heightTransform0706 $heightTransform0707
+        $heightTransform0708 $heightTransform0709 $heightTransform0710 $heightTransform0711
+        $heightTransform0712 $heightTransform0713 $heightTransform0714 $heightTransform0715
+        $heightTransform0716 $heightTransform0717 $heightTransform0718 $heightTransform0719
+        $heightTransform0720 $heightTransform0721 $heightTransform0722 $heightTransform0723
+        $heightTransform0724 $heightTransform0725 $heightTransform0726 $heightTransform0727
+        $heightTransform0728 $heightTransform0729 $heightTransform0730 $heightTransform0731
+        $heightTransform0732 $heightTransform0733 $heightTransform0734 $heightTransform0735
+        $heightTransform0736 $heightTransform0737 $heightTransform0738 $heightTransform0739
+        $heightTransform0740 $heightTransform0741 $heightTransform0742 $heightTransform0743
+        $heightTransform0744 $heightTransform0745 $heightTransform0746 $heightTransform0747
+        $heightTransform0748 $heightTransform0749 $heightTransform0750 $heightTransform0751
+        $heightTransform0752 $heightTransform0753 $heightTransform0754 $heightTransform0755
+        $heightTransform0756 $heightTransform0757 $heightTransform0758 $heightTransform0759
+        $heightTransform0760 $heightTransform0761 $heightTransform0762 $heightTransform0763
+        $heightTransform0764 $heightTransform0765 $heightTransform0766 $heightTransform0767
+        $heightTransform0768 $heightTransform0769 $heightTransform0770 $heightTransform0771
+        $heightTransform0772 $heightTransform0773 $heightTransform0774 $heightTransform0775
+        $heightTransform0776 $heightTransform0777 $heightTransform0778 $heightTransform0779
+        $heightTransform0780 $heightTransform0781 $heightTransform0782 $heightTransform0783
+        $heightTransform0784 $heightTransform0785 $heightTransform0786 $heightTransform0787
+        $heightTransform0788 $heightTransform0789 $heightTransform0790 $heightTransform0791
+        $heightTransform0792 $heightTransform0793 $heightTransform0794 $heightTransform0795
+        $heightTransform0796 $heightTransform0797 $heightTransform0798 $heightTransform0799
+        $heightTransform0800 $heightTransform0801 $heightTransform0802 $heightTransform0803
+        $heightTransform0804 $heightTransform0805 $heightTransform0806 $heightTransform0807
+        $heightTransform0808 $heightTransform0809 $heightTransform0810 $heightTransform0811
+        $heightTransform0812 $heightTransform0813 $heightTransform0814 $heightTransform0815
+        $heightTransform0816 $heightTransform0817 $heightTransform0818 $heightTransform0819
+        $heightTransform0820 $heightTransform0821 $heightTransform0822 $heightTransform0823
+        $heightTransform0824 $heightTransform0825 $heightTransform0826 $heightTransform0827
+        $heightTransform0828 $heightTransform0829 $heightTransform0830 $heightTransform0831
+        $heightTransform0832 $heightTransform0833 $heightTransform0834 $heightTransform0835
+        $heightTransform0836 $heightTransform0837 $heightTransform0838 $heightTransform0839
+        $heightTransform0840 $heightTransform0841 $heightTransform0842 $heightTransform0843
+        $heightTransform0844 $heightTransform0845 $heightTransform0846 $heightTransform0847
+        $heightTransform0848 $heightTransform0849 $heightTransform0850 $heightTransform0851
+        $heightTransform0852 $heightTransform0853 $heightTransform0854 $heightTransform0855
+        $heightTransform0856 $heightTransform0857 $heightTransform0858 $heightTransform0859
+        $heightTransform0860 $heightTransform0861 $heightTransform0862 $heightTransform0863
+        $heightTransform0864 $heightTransform0865 $heightTransform0866 $heightTransform0867
+        $heightTransform0868 $heightTransform0869 $heightTransform0870 $heightTransform0871
+        $heightTransform0872 $heightTransform0873 $heightTransform0874 $heightTransform0875
+        $heightTransform0876 $heightTransform0877 $heightTransform0878 $heightTransform0879
+        $heightTransform0880 $heightTransform0881 $heightTransform0882 $heightTransform0883
+        $heightTransform0884 $heightTransform0885 $heightTransform0886 $heightTransform0887
+        $heightTransform0888 $heightTransform0889 $heightTransform0890 $heightTransform0891
+        $heightTransform0892 $heightTransform0893 $heightTransform0894 $heightTransform0895
+        $heightTransform0896 $heightTransform0897 $heightTransform0898 $heightTransform0899
+        $heightTransform0900 $heightTransform0901 $heightTransform0902 $heightTransform0903
+        $heightTransform0904 $heightTransform0905 $heightTransform0906 $heightTransform0907
+        $heightTransform0908 $heightTransform0909 $heightTransform0910 $heightTransform0911
+        $heightTransform0912 $heightTransform0913 $heightTransform0914 $heightTransform0915
+        $heightTransform0916 $heightTransform0917 $heightTransform0918 $heightTransform0919
+        $heightTransform0920 $heightTransform0921 $heightTransform0922 $heightTransform0923
+        $heightTransform0924 $heightTransform0925 $heightTransform0926 $heightTransform0927
+        $heightTransform0928 $heightTransform0929 $heightTransform0930 $heightTransform0931
+        $heightTransform0932 $heightTransform0933 $heightTransform0934 $heightTransform0935
+        $heightTransform0936 $heightTransform0937 $heightTransform0938 $heightTransform0939
+        $heightTransform0940 $heightTransform0941 $heightTransform0942 $heightTransform0943
+        $heightTransform0944 $heightTransform0945 $heightTransform0946 $heightTransform0947
+        $heightTransform0948 $heightTransform0949 $heightTransform0950 $heightTransform0951
+        $heightTransform0952 $heightTransform0953 $heightTransform0954 $heightTransform0955
+        $heightTransform0956 $heightTransform0957 $heightTransform0958 $heightTransform0959
+        $heightTransform0960 $heightTransform0961 $heightTransform0962 $heightTransform0963
+        $heightTransform0964 $heightTransform0965 $heightTransform0966 $heightTransform0967
+        $heightTransform0968 $heightTransform0969 $heightTransform0970 $heightTransform0971
+        $heightTransform0972 $heightTransform0973 $heightTransform0974 $heightTransform0975
+        $heightTransform0976 $heightTransform0977 $heightTransform0978 $heightTransform0979
+        $heightTransform0980 $heightTransform0981 $heightTransform0982 $heightTransform0983
+        $heightTransform0984 $heightTransform0985 $heightTransform0986 $heightTransform0987
+        $heightTransform0988 $heightTransform0989 $heightTransform0990 $heightTransform0991
+        $heightTransform0992 $heightTransform0993 $heightTransform0994 $heightTransform0995
+        $heightTransform0996 $heightTransform0997 $heightTransform0998 $heightTransform0999
+        $heightTransform1000 $heightTransform1001 $heightTransform1002 $heightTransform1003
+        $heightTransform1004 $heightTransform1005 $heightTransform1006 $heightTransform1007
+        $heightTransform1008 $heightTransform1009 $heightTransform1010 $heightTransform1011
+        $heightTransform1012 $heightTransform1013 $heightTransform1014 $heightTransform1015
+        $heightTransform1016 $heightTransform1017 $heightTransform1018 $heightTransform1019
+        $heightTransform1020 $heightTransform1021 $heightTransform1022 $heightTransform1023
+    }];

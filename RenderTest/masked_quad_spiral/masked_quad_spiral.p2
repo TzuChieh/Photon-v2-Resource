@@ -7,7 +7,9 @@ image(raster-file) @spiralMask =
     [enum wrap-mode clamp-to-edge]
     [bool is-color false];
 
-material(matte-opaque) @blackMaterial = [spectrum albedo "0"];
+material(matte-opaque) @blackMaterial =
+    [spectrum albedo "0"]
+    [image interface-mask @spiralMask];
 
 // A large directly visible area light sits behind the mask and faces the camera.
 actor(model-light) @backLight =
@@ -15,12 +17,8 @@ actor(model-light) @backLight =
     [image emitted-energy @unitRadiance];
 translate(@backLight) = [vector3 amount "0 0 -2.5"];
 
-// The base model is phantom so only the masked wrapper contributes to the scene.
-phantom actor(model) @maskBase =
+// The material mask controls which parts of the model interface exist.
+actor(model) @maskedQuad =
     [geometry geometry @maskRect]
     [material material @blackMaterial];
-translate(@maskBase) = [vector3 amount "0 0 -1.5"];
-
-actor(masked-model) @maskedQuad =
-    [actor base @maskBase]
-    [image mask @spiralMask];
+translate(@maskedQuad) = [vector3 amount "0 0 -1.5"];

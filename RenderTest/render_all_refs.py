@@ -40,6 +40,8 @@ REF_SCENE_TO_OUTPUTS = {
     "single_ply_mesh/ref_quad_bneept_16384spp.p2": ("var",),
     "single_ply_mesh/ref_suzanne_bvpt_16384spp.p2": ("var",),
     "single_ply_mesh/ref_suzanne_bneept_16384spp.p2": ("beauty", "var"),
+    "transformed_instances/ref_general_transform_bvpt_4096spp.p2": ("beauty",),
+    "transformed_instances/ref_translation_only_bneept_4096spp.p2": ("beauty",),
     "white_100W_point_light/ref_bneept_65536spp.p2": ("beauty", "var"),
     "white_100W_rect_area_light/ref_bneept_8192spp.p2": ("beauty", "var"),
     "white_100W_rect_area_light/ref_bvpt_8192spp.p2": ("var",),
