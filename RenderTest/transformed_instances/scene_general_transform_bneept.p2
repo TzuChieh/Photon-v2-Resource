@@ -2,7 +2,7 @@
 
 option(single-frame-render-session) @session = [vector2 frame-size "512 384"] [string visualizer @visualizer] [string observer @observer] [string sample-source @sampler];
 observer(single-lens) @observer = [real fov-degrees 46] [vector3 pos "13.63 12.11 18.17"] [vector3 dir "-13.63 -13 -18.17"] [vector3 up-axis "0 1 0"];
-sample-source(stratified) @sampler = [integer samples 128];
+sample-source(stratified) @sampler = [integer samples 512];
 visualizer(path-tracing) @visualizer = [enum sample-filter box] [enum estimator bneept];
 
 #import "general_transform.p2";
